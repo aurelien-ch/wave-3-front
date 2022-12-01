@@ -1,6 +1,10 @@
+import "./app.css";
+
 const App = () => {
   return (
-    <div>Wave3 - Test deployment</div>
+    <div className="main-container">
+      Wave3 - Test deployment
+    </div>
   );
 }
 
