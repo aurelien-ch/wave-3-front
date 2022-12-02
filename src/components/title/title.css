@@ -1,0 +1,39 @@
+.title {
+  font-family: SmallPixel;
+  font-size: 120px;
+  letter-spacing: 4px;
+  animation: pulsate 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulsate {
+
+  0%,
+  6%,
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  61%,
+  70%,
+  80%,
+  90%,
+  100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #9de2ae,
+      0 0 19px #3e764c,
+      0 0 40px #3e764c,
+      0 0 80px #3e764c,
+      0 0 90px #092c12,
+      0 0 100px #092c12,
+      0 0 150px #092c12;
+    color: white;
+  }
+
+  5%,
+  60% {
+    text-shadow: none;
+    color: rgb(255 255 255 / 20%);
+  }
+}

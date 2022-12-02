@@ -1,9 +1,13 @@
+import Title from "./components/title/title";
 import "./app.css";
 
 const App = () => {
+
   return (
     <div className="main-container">
-      Wave3 - Test deployment
+      <div className="title-container flex justify-center">
+        <Title />
+      </div>
     </div>
   );
 }

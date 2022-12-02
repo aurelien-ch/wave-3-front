@@ -1,18 +1,48 @@
 body {
   margin: 0;
   color: white;
+  font-family: SpaceGrotesk;
+  background-color: rgb(40, 40, 40);
 }
 
-@keyframes GradientAnimation {
-  0% {
-    background-position: 0% 50%
-  }
-
-  50% {
-    background-position: 100% 50%
-  }
-
-  100% {
-    background-position: 0% 50%
-  }
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: local("SpaceGrotesk"), url("assets/fonts/SpaceGrotesk-Medium.otf") format("truetype");
 }
+
+@font-face {
+  font-family: "SmallPixel";
+  src: local("SmallPixel"), url("assets/fonts/NeonBallroom.otf") format("truetype");
+}
+
+/*** Flex Layout Classes ***/
+
+.flex {
+  display: flex;
+}
+
+.flex-columns {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: end;
+}
+
+/***************************/
