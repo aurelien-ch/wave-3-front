@@ -1,8 +1,8 @@
 .main-container {
   height: 100vh;
-  background: linear-gradient(45deg, #0d1a0d, #10481e);
+  background: linear-gradient(45deg, #0d1a0d, #0f421c);
   background-size: 400% 400%;
-  animation: GradientAnimation 8s ease infinite;
+  animation: GradientAnimation 6s ease infinite;
 }
 
 @keyframes GradientAnimation {
@@ -20,5 +20,5 @@
 }
 
 .title-container {
-  padding: 40px 0;
+  padding: 30px 0;
 }
