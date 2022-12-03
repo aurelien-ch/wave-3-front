@@ -1,7 +1,7 @@
 const resources = {
   en: {
     translation: {
-      wave3: "Wave3",
+      connect: "Connect",
     }
   }
 };

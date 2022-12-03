@@ -7,7 +7,11 @@ const Title = () => {
 
   return (
     <div className="title">
-      {t("wave3")}
+      <span>W</span>
+      <span>a</span>
+      <span>v</span>
+      <span>e</span>
+      <span>3</span>
     </div>
   );
 }

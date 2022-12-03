@@ -1,23 +1,47 @@
 .title {
-  font-family: SmallPixel;
+  font-family: NeonBallroom;
   font-size: 120px;
   letter-spacing: 4px;
-  animation: pulsate 2s ease-in-out infinite alternate;
+  animation: flicker 2s ease-in-out infinite alternate;
+  text-shadow:
+    0px 2px 4px #fff,
+    0px 2px 11px #9de2ae,
+    0px 2px 19px #3e764c,
+    0px 2px 40px #3e764c,
+    0px 2px 80px #3e764c,
+    0px 2px 90px #092c12,
+    0px 2px 100px #092c12,
+    0px 2px 150px #092c12;
 }
 
-@keyframes pulsate {
+.title span:nth-of-type(1) {
+  animation: blink 10s ease-in-out 3s infinite;
+}
 
-  0%,
-  6%,
-  10%,
-  20%,
-  30%,
-  40%,
-  50%,
-  61%,
-  70%,
-  80%,
-  90%,
+.title span:nth-of-type(2) {
+  animation: blink 10s ease-in-out 12s infinite;
+}
+
+.title span:nth-of-type(3) {
+  animation: blink 10s ease-in-out 18s infinite;
+}
+
+.title span:nth-of-type(4) {
+  animation: blink 10s ease-in-out 7s infinite;
+}
+
+.title span:nth-of-type(5) {
+  animation: blink 10s ease-in-out 14s infinite;
+}
+
+@keyframes blink {
+  0% {
+    text-shadow: none;
+    color: rgb(20, 82, 26);
+    color: white;
+  }
+
+  2%,
   100% {
     text-shadow:
       0px 2px 4px #fff,
@@ -28,12 +52,132 @@
       0px 2px 90px #092c12,
       0px 2px 100px #092c12,
       0px 2px 150px #092c12;
-    color: white;
+  }
+}
+
+
+@keyframes flicker {
+  from {
+    opacity: 1;
   }
 
-  5%,
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
   60% {
-    text-shadow: none;
-    color: rgb(255 255 255 / 20%);
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
   }
 }

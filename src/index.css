@@ -11,7 +11,7 @@ body {
 }
 
 @font-face {
-  font-family: "SmallPixel";
+  font-family: "NeonBallroom";
   src: local("SmallPixel"), url("assets/fonts/NeonBallroom.otf") format("truetype");
 }
 
@@ -31,6 +31,10 @@ body {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .justify-end {
