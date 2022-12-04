@@ -6,7 +6,7 @@ import ConnectButton from "./components/connect-button/connect-button";
 import "./app.css";
 
 const App = () => {
-  const [metamaskAccount, setMetamaskAccount] = useState("");
+  const [metamaskAccount, setMetamaskAccount] = useState<string>();
 
   useEffect(() => {
     const ethereum = window.ethereum;
@@ -41,10 +41,13 @@ const App = () => {
 
   return (
     <div className="main-container">
-      <div className="head-container flex justify-around align-center">
+      <div className="head-container">
         <Socials />
         <Title />
-        <ConnectButton connectWallet={connectWallet} />
+        <ConnectButton
+          connectWallet={connectWallet}
+          metamaskAccount={metamaskAccount}
+        />
       </div>
     </div>
   );
