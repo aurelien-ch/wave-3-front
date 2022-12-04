@@ -1,29 +1,15 @@
-/* .connect-button {
-  font-size: 18px;
-  background-color: rgb(0, 83, 14);
-  box-shadow: 0 2px 10px rgb(3, 41, 0);
-  border-radius: 30px;
-  padding: 14px 30px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.connect-button:hover {
-  transform: scale(1.05);
-} */
-
 .connect-button {
-  color: #5fa070;
+  color: #61a273;
   font-size: 20px;
-  border: 4px solid #5fa070;
+  border: 4px solid #61a273;
   border-radius: 15px;
-  filter: drop-shadow(0 0 5px #5fa070) drop-shadow(0 0 50px #5fa070) contrast(2) brightness(2);
+  filter: drop-shadow(0 1px 5px #61a273) drop-shadow(0 1px 50px #61a273) contrast(2) brightness(2);
   padding: 12px 28px;
   cursor: pointer;
-  transition: .3s;
+  transition: .8s;
   animation: flicker 2s ease-in-out 2s infinite alternate;
 }
 
 .connect-button:hover {
-  filter: drop-shadow(0 0 5px #5fa070) drop-shadow(0 0 50px #5fa070) contrast(2) brightness(2);
+  filter: drop-shadow(0 1px 15px #61a273) drop-shadow(0 1px 50px #61a273) contrast(2) brightness(2);
 }
