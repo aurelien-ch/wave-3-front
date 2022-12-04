@@ -20,6 +20,11 @@ const ConnectButton = () => {
       onClick={() => metamaskProvider.connectAccount()}
     >
       {metamaskAccount ? formatAddress(metamaskAccount) : t("connect")}
+      <img
+        className="metamask-icon"
+        alt="metamask"
+        src={require("../../assets/icons/metamask.png")}
+      />
     </div>
   );
 }
