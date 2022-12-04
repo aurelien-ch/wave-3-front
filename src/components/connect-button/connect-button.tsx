@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 
+import { useStore } from "../../providers/state/state-provider";
+import { useMetamaskProvider } from "../../providers/metamask-provider";
 import "./connect-button.css";
 
-interface ConnectButtonProps {
-  connectWallet: Function,
-  metamaskAccount: string | undefined,
-}
-
-const ConnectButton = ({ connectWallet, metamaskAccount }: ConnectButtonProps) => {
+const ConnectButton = () => {
   const { t } = useTranslation();
+
+  const metamaskProvider = useMetamaskProvider();
+  const metamaskAccount = useStore(state => state.metamaskAccount);
 
   const formatAddress = (address: string) => {
     return address.substring(0, 6) + "..." + address.substring(address.length - 4);
@@ -17,7 +17,7 @@ const ConnectButton = ({ connectWallet, metamaskAccount }: ConnectButtonProps) =
   return (
     <div
       className="connect-button"
-      onClick={() => connectWallet()}
+      onClick={() => metamaskProvider.connectAccount()}
     >
       {metamaskAccount ? formatAddress(metamaskAccount) : t("connect")}
     </div>

@@ -1,53 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
+import { useMetamaskProvider } from "./providers/metamask-provider";
 import Socials from "./components/socials/socials";
 import Title from "./components/title/title";
 import ConnectButton from "./components/connect-button/connect-button";
 import "./app.css";
 
 const App = () => {
-  const [metamaskAccount, setMetamaskAccount] = useState<string>();
+  const metamaskProvider = useMetamaskProvider();
 
   useEffect(() => {
-    const ethereum = window.ethereum;
-
-    if (!ethereum) {
-      console.log("Make sure you have Metamask!");
-    } else {
-      ethereum.request({ method: "eth_accounts" })
-        .then((accounts: any) => {
-          if (accounts.length) {
-            console.log("Found an authorized account:", accounts[0]);
-            setMetamaskAccount(accounts[0]);
-          } else {
-            console.log("No authorized account found");
-          }
-        });
+    if (metamaskProvider.getEthereum()) {
+      metamaskProvider.findConnectedAccount();
     }
-  }, []);
-
-  const connectWallet = () => {
-    const ethereum = window.ethereum;
-
-    if (!ethereum) {
-      console.log("Make sure you have Metamask!");
-    } else {
-      ethereum.request({ method: "eth_requestAccounts" })
-        .then((accounts: any) => {
-          setMetamaskAccount(accounts[0]);
-        });
-    }
-  };
+  }, [metamaskProvider]);
 
   return (
     <div className="main-container">
       <div className="head-container">
         <Socials />
         <Title />
-        <ConnectButton
-          connectWallet={connectWallet}
-          metamaskAccount={metamaskAccount}
-        />
+        <ConnectButton />
       </div>
     </div>
   );

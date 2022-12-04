@@ -1,10 +1,6 @@
-import { useTranslation } from "react-i18next";
-
 import "./title.css";
 
 const Title = () => {
-  const { t } = useTranslation();
-
   return (
     <div className="title">
       <span>W</span>
