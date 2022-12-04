@@ -1,34 +1,9 @@
 .main-container {
   height: 100vh;
-  background: linear-gradient(45deg, #011301, #051f0c);
-  background-size: 400% 400%;
-  animation: GradientAnimation 6s ease infinite;
-}
-
-.main-container:before {
-  content: ' ';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.1;
-  background-image: url("./assets/background.jpeg");
+  background-image:
+    linear-gradient(45deg, rgba(10, 64, 10, 0.8), rgba(0, 11, 3, 0.8)),
+    url("./assets/background.jpeg");
   background-size: cover;
-}
-
-@keyframes GradientAnimation {
-  0% {
-    background-position: 0% 50%
-  }
-
-  50% {
-    background-position: 100% 50%
-  }
-
-  100% {
-    background-position: 0% 50%
-  }
 }
 
 .head-container {
