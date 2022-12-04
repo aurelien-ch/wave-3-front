@@ -17,8 +17,6 @@ class MetamaskProvider {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
-      console.log(accounts);
-
       if (accounts.length) {
         useStore.getState().setMetamaskAccount(accounts[0]);
       }
