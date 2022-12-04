@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import Socials from "./components/socials/socials";
 import Title from "./components/title/title";
 import ConnectButton from "./components/connect-button/connect-button";
 import "./app.css";
@@ -11,7 +12,7 @@ const App = () => {
     const ethereum = window.ethereum;
 
     if (!ethereum) {
-      console.error("Make sure you have Metamask!");
+      console.log("Make sure you have Metamask!");
     } else {
       ethereum.request({ method: "eth_accounts" })
         .then((accounts: any) => {
@@ -19,7 +20,7 @@ const App = () => {
             console.log("Found an authorized account:", accounts[0]);
             setMetamaskAccount(accounts[0]);
           } else {
-            console.error("No authorized account found");
+            console.log("No authorized account found");
           }
         });
     }
@@ -29,7 +30,7 @@ const App = () => {
     const ethereum = window.ethereum;
 
     if (!ethereum) {
-      console.error("Make sure you have Metamask!");
+      console.log("Make sure you have Metamask!");
     } else {
       ethereum.request({ method: "eth_requestAccounts" })
         .then((accounts: any) => {
@@ -41,9 +42,7 @@ const App = () => {
   return (
     <div className="main-container">
       <div className="head-container flex justify-around align-center">
-        <div>
-          socials
-        </div>
+        <Socials />
         <Title />
         <ConnectButton connectWallet={connectWallet} />
       </div>
