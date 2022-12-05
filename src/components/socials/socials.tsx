@@ -1,5 +1,6 @@
 import { ReactComponent as GitHubSvg } from "../../assets/icons/github.svg";
 import { ReactComponent as LinkedInSvg } from "../../assets/icons/linkedin.svg";
+
 import "./socials.css";
 
 const Socials = () => {

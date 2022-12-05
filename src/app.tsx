@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 
 import { useMetamaskProvider } from "./providers/metamask-provider";
-import Socials from "./components/socials/socials";
-import Title from "./components/title/title";
-import ConnectButton from "./components/connect-button/connect-button";
+import Header from "./components/header/header";
+
 import "./app.css";
 
 const App = () => {
@@ -17,11 +16,7 @@ const App = () => {
 
   return (
     <div className="main-container">
-      <div className="head-container">
-        <Socials />
-        <Title />
-        <ConnectButton />
-      </div>
+      <Header />
     </div>
   );
 }
