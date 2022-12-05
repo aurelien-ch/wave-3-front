@@ -6,7 +6,7 @@
   cursor: pointer;
   filter: drop-shadow(0 1px 5px #44945a) drop-shadow(0 1px 50px #44945a) contrast(2) brightness(2);
   animation: flicker 2s ease-in-out 2s infinite alternate;
-  transition: .8s;
+  transition: .5s;
 }
 
 .socials svg:hover {

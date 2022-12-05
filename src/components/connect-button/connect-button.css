@@ -7,7 +7,7 @@
   padding: 10px 55px 10px 20px;
   filter: drop-shadow(0 1px 5px #61a273) drop-shadow(0 1px 50px #61a273) contrast(2) brightness(2);
   animation: flicker 2s ease-in-out 4s infinite alternate;
-  transition: .8s;
+  transition: .5s;
 }
 
 .connect-button.connected {

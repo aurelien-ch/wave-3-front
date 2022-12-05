@@ -15,7 +15,7 @@ const App = () => {
   }, [metamaskProvider]);
 
   return (
-    <div className="main-container">
+    <div className="app-container">
       <Header />
     </div>
   );

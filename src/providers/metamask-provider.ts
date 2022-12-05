@@ -13,7 +13,7 @@ class MetamaskProvider {
     useStore.getState().setMetamaskAccount(accounts[0] ?? null);
   }
 
-  async findConnectedAccount() {
+  findConnectedAccount = async () => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
@@ -25,7 +25,7 @@ class MetamaskProvider {
     }
   }
 
-  async connectAccount() {
+  connectAccount = async () => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_requestAccounts" });
 
