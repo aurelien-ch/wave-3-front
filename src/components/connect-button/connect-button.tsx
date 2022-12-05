@@ -16,15 +16,19 @@ const ConnectButton = () => {
 
   return (
     <div
-      className="connect-button"
+      className={`connect-button ${metamaskAccount ? "connected" : ""}`}
       onClick={() => metamaskProvider.connectAccount()}
     >
       {metamaskAccount ? formatAddress(metamaskAccount) : t("connect")}
-      <img
-        className="metamask-icon"
-        alt="metamask"
-        src={require("../../assets/icons/metamask.png")}
-      />
+      {
+        !metamaskAccount && (
+          <img
+            className="metamask-icon"
+            alt="metamask"
+            src={require("../../assets/icons/metamask.png")}
+          />
+        )
+      }
     </div>
   );
 }
