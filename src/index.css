@@ -5,14 +5,25 @@ body {
   background-color: rgb(40, 40, 40);
 }
 
+/*** Font Classes ***/
+
 @font-face {
   font-family: "SpaceGrotesk";
   src: local("SpaceGrotesk"), url("assets/fonts/SpaceGrotesk-Regular.otf") format("truetype");
 }
 
 @font-face {
+  font-family: "SpaceGroteskBold";
+  src: local("SpaceGrotesk"), url("assets/fonts/SpaceGrotesk-Bold.otf") format("truetype");
+}
+
+@font-face {
   font-family: "NeonBallroom";
   src: local("SmallPixel"), url("assets/fonts/NeonBallroom.otf") format("truetype");
+}
+
+.font-bold {
+  font-family: SpaceGroteskBold;
 }
 
 /*** Flex Layout Classes ***/
@@ -47,4 +58,10 @@ body {
 
 .align-end {
   align-items: end;
+}
+
+/*** Spacing Classes ***/
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
 }
