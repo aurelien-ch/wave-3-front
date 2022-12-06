@@ -4,7 +4,7 @@ import "./wave-box.css";
 
 const WaveBox = () => {
   const { t } = useTranslation();
-  const totalWaves = 12;
+  const userTotalWaves = 12;
 
   return (
     <div className="flex justify-center">
@@ -20,11 +20,14 @@ const WaveBox = () => {
             {t("waveHeadline3")}
           </div>
         </div>
-        <div style={{ flex: 1, marginLeft: 25 }}>
-          <div>
+        <div
+          style={{ flex: 1 }}
+          className="flex flex-columns align-end"
+        >
+          <div style={{ marginRight: 5 }}>
             {t("yourTotalWaves")}
             <span className="font-bold">
-              {totalWaves}
+              {userTotalWaves}
             </span>
           </div>
           <div className="wave-at-me-button">

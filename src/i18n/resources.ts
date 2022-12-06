@@ -8,6 +8,7 @@ const resources = {
       yourTotalWaves: "Your total waves : ",
       waveAtMe: "Wave at me",
       allWaves: "All waves",
+      total: "Total : ",
     }
   }
 };

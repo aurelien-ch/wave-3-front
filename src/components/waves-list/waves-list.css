@@ -1,7 +1,11 @@
 .waves-list {
-  flex-grow: 1;
+  flex: 1 0 0;
   background-color: rgb(2 25 4 / 42%);
   padding: 20px 30px;
   border-radius: 15px;
   border: 1px solid #295d29;
+}
+
+.waves-list .all-waves-label {
+  font-size: 22px;
 }
