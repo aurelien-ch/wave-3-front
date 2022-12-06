@@ -4,10 +4,10 @@
 
 .socials svg {
   cursor: pointer;
-  filter: drop-shadow(0 1px 5px #44945a) drop-shadow(0 1px 50px #44945a) contrast(2) brightness(2);
+  filter: drop-shadow(0 1px 5px #44945a) drop-shadow(0 1px 25px #44945a) contrast(2) brightness(2);
   transition: .5s;
 }
 
 .socials svg:hover {
-  filter: drop-shadow(0 1px 20px #44945a) drop-shadow(0 1px 50px #44945a) contrast(2) brightness(2);
+  filter: drop-shadow(0 1px 20px #44945a) drop-shadow(0 1px 25px #44945a) contrast(2) brightness(2);
 }

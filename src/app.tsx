@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="app-container">
       <Header />
-      <WaveBox />
+      {/* <WaveBox /> */}
     </div>
   );
 }
