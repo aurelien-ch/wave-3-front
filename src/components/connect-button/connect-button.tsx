@@ -32,6 +32,6 @@ const ConnectButton = () => {
       }
     </div>
   );
-}
+};
 
 export default ConnectButton;

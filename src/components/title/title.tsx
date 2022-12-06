@@ -10,6 +10,6 @@ const Title = () => {
       <span>3</span>
     </div>
   );
-}
+};
 
 export default Title;

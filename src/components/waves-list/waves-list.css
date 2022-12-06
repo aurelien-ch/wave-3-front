@@ -1,0 +1,7 @@
+.waves-list {
+  flex-grow: 1;
+  background-color: rgb(2 25 4 / 42%);
+  padding: 20px 30px;
+  border-radius: 15px;
+  border: 1px solid #295d29;
+}

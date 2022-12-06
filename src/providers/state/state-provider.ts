@@ -10,7 +10,6 @@ export type State = {
 export const initialState = ((set: any) => ({
   metamaskAccount: undefined,
   setMetamaskAccount: (account: string) => setMetamaskAccount(set)(account),
-
 }));
 
 export const useStore = create<State>((set) => initialState(set));

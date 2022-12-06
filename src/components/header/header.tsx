@@ -12,6 +12,6 @@ const Header = () => {
       <ConnectButton />
     </div>
   );
-}
+};
 
 export default Header;

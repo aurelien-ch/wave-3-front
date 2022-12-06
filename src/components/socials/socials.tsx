@@ -20,6 +20,6 @@ const Socials = () => {
       </a>
     </div>
   );
-}
+};
 
 export default Socials;

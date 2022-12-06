@@ -6,6 +6,12 @@
   animation: GradientAnimation 6s ease infinite;
 }
 
+.lists-container {
+  /* width: 800px;
+  max-width: 80%;*/
+  margin: 30px 5%;
+  gap: 50px;
+}
 
 @keyframes GradientAnimation {
   0% {

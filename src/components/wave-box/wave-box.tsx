@@ -34,6 +34,6 @@ const WaveBox = () => {
       </div>
     </div>
   );
-}
+};
 
 export default WaveBox;
