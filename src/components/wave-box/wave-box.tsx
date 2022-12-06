@@ -10,7 +10,7 @@ const WaveBox = () => {
     <div className="flex justify-center">
       <div className="wave-box flex">
         <div style={{ flex: 2.5 }}>
-          <div className="margin-bottom-10">
+          <div className="first-wave-headline margin-bottom-10">
             {t("waveHeadline1")}
           </div>
           <div className="margin-bottom-10">

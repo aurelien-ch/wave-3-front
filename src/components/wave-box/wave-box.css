@@ -7,6 +7,10 @@
   margin: 0 5%;
 }
 
+.wave-box .first-wave-headline {
+  font-size: 18px;
+}
+
 .wave-box .wave-at-me-button {
   font-size: 18px;
   width: fit-content;
