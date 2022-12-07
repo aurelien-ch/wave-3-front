@@ -1,11 +1,20 @@
+import { ethers, BigNumber } from "ethers";
+
 import { useStore } from "./state/state-provider";
+import contractABI from "../contract/wave-3.json";
 
 class MetamaskProvider {
   private ethereum = window.ethereum;
+  private contractAddress = window.env.CONTRACT_ADDRESS;
+  private contract;
 
   getEthereum = () => this.ethereum;
 
   constructor() {
+    const provider = new ethers.providers.Web3Provider(this.ethereum);
+    const signer = provider.getSigner();
+
+    this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
     this.ethereum.addListener("accountsChanged", this.onAccountsChanged);
   }
 
@@ -32,6 +41,21 @@ class MetamaskProvider {
       if (accounts.length) {
         useStore.getState().setMetamaskAccount(accounts[0]);
       }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  getTotalWaves = async () => {
+    try {
+      return BigNumber.from(await this.contract.getTotalWaves()).toNumber();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  wave = async () => {
+    try {
     } catch (error) {
       console.error(error);
     }

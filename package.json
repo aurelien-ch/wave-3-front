@@ -10,6 +10,7 @@
     "@types/node": "^16.18.4",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "ethers": "^5.7.2",
     "i18next": "^22.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -47,7 +48,8 @@
   "react-dotenv": {
     "whitelist": [
       "GITHUB_LINK",
-      "LINKEDIN_LINK"
+      "LINKEDIN_LINK",
+      "CONTRACT_ADDRESS"
     ]
   }
 }
