@@ -56,6 +56,11 @@ class MetamaskProvider {
 
   wave = async () => {
     try {
+      const waveTxn = await this.contract.wave();
+      console.log("Mining...", waveTxn.hash);
+
+      await waveTxn.wait();
+      console.log("Mined --", waveTxn.hash);
     } catch (error) {
       console.error(error);
     }

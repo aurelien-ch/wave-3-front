@@ -21,14 +21,10 @@ const App = () => {
     <div className="app-container">
       <Header />
       <WaveBox />
-      {/* <div className="flex justify-center"> */}
       <div className="lists-container flex">
-        {/* <div className=" flex justify-between"> */}
         <WavesList />
         <TopWavers />
-        {/* </div> */}
       </div>
-      {/* </div> */}
     </div>
   );
 };

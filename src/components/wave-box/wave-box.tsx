@@ -1,9 +1,13 @@
 import { useTranslation } from "react-i18next";
 
+import { useMetamaskProvider } from "../../providers/metamask-provider";
+
 import "./wave-box.css";
 
 const WaveBox = () => {
   const { t } = useTranslation();
+
+  const metamaskProvider = useMetamaskProvider();
   const userTotalWaves = 12;
 
   return (
@@ -30,7 +34,10 @@ const WaveBox = () => {
               {userTotalWaves}
             </span>
           </div>
-          <div className="wave-at-me-button">
+          <div
+            className="wave-at-me-button"
+            onClick={metamaskProvider.wave}
+          >
             {t("waveAtMe")} 👋
           </div>
         </div>
