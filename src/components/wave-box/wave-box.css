@@ -11,11 +11,15 @@
   font-size: 18px;
 }
 
+.wave-box .user-total-waves-label {
+  margin-right: 5px;
+}
+
 .wave-box .wave-at-me-button {
   position: relative;
   font-size: 20px;
   width: fit-content;
-  background-color: rgb(12 50 10);
+  background-color: #0c320a;
   padding: 15px 30px;
   border-radius: 20px;
   margin-top: 17px;

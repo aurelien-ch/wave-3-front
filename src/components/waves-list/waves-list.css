@@ -9,3 +9,10 @@
 .waves-list .all-waves-label {
   font-size: 22px;
 }
+
+.waves-list .total-waves-container {
+  font-size: 15px;
+  background-color: #0e3a0b;
+  border-radius: 6px;
+  padding: 5px 12px;
+}

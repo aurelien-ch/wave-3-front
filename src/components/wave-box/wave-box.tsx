@@ -17,7 +17,7 @@ const WaveBox = () => {
     <div className="flex justify-center">
       <div className="wave-box flex">
         <div style={{ flex: 2.5 }}>
-          <div className="first-wave-headline margin-bottom-10">
+          <div className="first-wave-headline font-bold margin-bottom-10">
             {t("waveHeadline1")}
           </div>
           <div className="margin-bottom-10">
@@ -31,7 +31,7 @@ const WaveBox = () => {
           style={{ flex: 1 }}
           className="flex flex-columns align-end"
         >
-          <div style={{ marginRight: 5 }}>
+          <div className="user-total-waves-label">
             {t("yourTotalWaves")}
             <span className="font-bold">
               {userTotalWaves}

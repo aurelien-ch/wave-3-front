@@ -24,9 +24,11 @@ const WavesList = () => {
 
   return (
     <div className="waves-list">
-      <div className="all-waves-label flex justify-between">
-        {t("allWaves")}
-        <div className="flex">
+      <div className="flex justify-between font-bold">
+        <div className="all-waves-label">
+          {t("allWaves")}
+        </div>
+        <div className="total-waves-container flex align-center">
           {t("total")}
           {totalWaves}
         </div>
