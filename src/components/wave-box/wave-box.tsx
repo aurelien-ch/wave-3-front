@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import { useMetamaskProvider } from "../../providers/metamask-provider";
 
@@ -8,6 +10,7 @@ const WaveBox = () => {
   const { t } = useTranslation();
 
   const metamaskProvider = useMetamaskProvider();
+  const [loading, setLoading] = useState(false);
   const userTotalWaves = 12;
 
   return (
@@ -36,9 +39,20 @@ const WaveBox = () => {
           </div>
           <div
             className="wave-at-me-button"
-            onClick={metamaskProvider.wave}
+            onClick={() => {
+              setLoading(true);
+              metamaskProvider.wave().finally(() => setLoading(false));
+            }}
           >
-            {t("waveAtMe")} 👋
+            <div className={loading ? "opacity-0" : ""}>
+              {t("waveAtMe")} 👋
+            </div>
+            <div className="wave-loading-spinner">
+              <PropagateLoader
+                color="#0c8314"
+                loading={loading}
+              />
+            </div>
           </div>
         </div>
       </div>

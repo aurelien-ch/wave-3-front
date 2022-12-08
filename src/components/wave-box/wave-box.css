@@ -12,6 +12,7 @@
 }
 
 .wave-box .wave-at-me-button {
+  position: relative;
   font-size: 20px;
   width: fit-content;
   background-color: rgb(12 50 10);
@@ -24,4 +25,11 @@
 
 .wave-box .wave-at-me-button:hover {
   transform: scale(1.05);
+}
+
+.wave-box .wave-loading-spinner {
+  position: absolute;
+  top: 38%;
+  left: 47%;
+  transform: translate(-50%, -50%);
 }
