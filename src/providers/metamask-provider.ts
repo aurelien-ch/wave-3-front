@@ -20,7 +20,7 @@ class MetamaskProvider {
   }
 
   private onAccountsChanged(accounts: string[]) {
-    useStore.getState().setMetamaskAccount(accounts[0] ?? null);
+    useStore.getState().setMetamaskAccount(accounts[0] ?? undefined);
   }
 
   findConnectedAccount = async () => {
@@ -69,8 +69,8 @@ class MetamaskProvider {
 
       await waveTxn.wait();
 
-      useStore.getState().setSenderWaves(useStore.getState().senderWaves + 1);
-      useStore.getState().setTotalWaves(useStore.getState().totalWaves + 1);
+      useStore.getState().setSenderWaves(useStore.getState().senderWaves! + 1);
+      useStore.getState().setTotalWaves(useStore.getState().totalWaves! + 1);
     } catch (error: any) {
       if (error.code !== "ACTION_REJECTED") {
         useStore.getState().setShowModal(true,

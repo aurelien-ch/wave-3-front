@@ -21,7 +21,7 @@ const WaveBox = () => {
         setSenderWaves(waves!);
       });
     } else {
-      setSenderWaves(0);
+      setSenderWaves(undefined);
     }
   }, [metamaskAccount, metamaskProvider, setSenderWaves]);
 
@@ -44,10 +44,10 @@ const WaveBox = () => {
             style={{ flex: 1 }}
             className="flex flex-columns align-end"
           >
-            <div className="user-total-waves-label">
+            <div className={`user-total-waves-label ${!metamaskAccount ? "opacity-0-2" : ""}`}>
               {t("waveBox.yourTotalWaves")}
               <span className="font-bold">
-                {senderWaves}
+                {senderWaves ?? "-"}
               </span>
             </div>
             <WaveButton />

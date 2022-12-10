@@ -15,26 +15,26 @@ export type State = {
   modalTitle: string,
   modalContent: string[],
   // Waves Counts
-  senderWaves: number,
-  setSenderWaves: (wavesCount: number) => void,
-  totalWaves: number,
-  setTotalWaves: (wavesCount: number) => void,
+  senderWaves: number | undefined,
+  setSenderWaves: (wavesCount: number | undefined) => void,
+  totalWaves: number | undefined,
+  setTotalWaves: (wavesCount: number | undefined) => void,
 }
 
 export const initialState = ((set: any) => ({
   // Metamask Account
   metamaskAccount: undefined,
-  setMetamaskAccount: (account: string) => setMetamaskAccount(set)(account),
+  setMetamaskAccount: (account: string | undefined) => setMetamaskAccount(set)(account),
   // Modal
   showModal: false,
   setShowModal: (showModal: boolean, modalTitle?: string, modalContent?: string[]) => setShowModal(set)(showModal, modalTitle, modalContent),
   modalTitle: "",
   modalContent: [],
   // Waves Counts
-  senderWaves: 0,
-  setSenderWaves: (wavesCount: number) => setSenderWaves(set)(wavesCount),
-  totalWaves: 0,
-  setTotalWaves: (wavesCount: number) => setTotalWaves(set)(wavesCount),
+  senderWaves: undefined,
+  setSenderWaves: (wavesCount: number | undefined) => setSenderWaves(set)(wavesCount),
+  totalWaves: undefined,
+  setTotalWaves: (wavesCount: number | undefined) => setTotalWaves(set)(wavesCount),
 }));
 
 export const useStore = create<State>((set) => initialState(set));

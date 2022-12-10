@@ -18,7 +18,7 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
       height: "fit-content",
       width: 400,
       maxWidth: "70%",
-      backgroundColor: "#022e06",
+      backgroundColor: "#022906",
       border: "none",
       borderRadius: 15,
       top: "50%",

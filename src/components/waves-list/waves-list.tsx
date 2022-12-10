@@ -19,6 +19,8 @@ const WavesList = () => {
       metamaskProvider.getTotalWaves().then(waves => {
         setTotalWaves(waves!);
       });
+    } else {
+      setTotalWaves(undefined);
     }
   }, [metamaskAccount, metamaskProvider, setTotalWaves]);
 
@@ -28,9 +30,9 @@ const WavesList = () => {
         <div className="all-waves-label">
           {t("wavesList.allWaves")}
         </div>
-        <div className="total-waves-container flex align-center">
+        <div className={`total-waves-container flex align-center ${!metamaskAccount ? "opacity-0-3" : ""}`}>
           {t("wavesList.total")}
-          {totalWaves}
+          {totalWaves ?? "-"}
         </div>
       </div>
     </div>
