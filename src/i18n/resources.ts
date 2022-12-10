@@ -2,14 +2,18 @@ const resources = {
   en: {
     translation: {
       modal: {
-        error: "Error",
+        error: "Whoops !",
         close: "Close",
+      },
+      errors: {
+        notConnected1: "You're not currently connected with your Metamask wallet.",
+        notConnected2: "Please connect your wallet to be able to wave at me !",
       },
       header: {
         connect: "Connect",
       },
       waveBox: {
-        waveHeadline1: "Hi ! My name is Aurélien, and welcome on my dApp.",
+        waveHeadline1: "Hi ! My name is Aurélien, and welcome on my first dApp.",
         waveHeadline2: "Here you can wave at me, and each wave will be stored on the Ethereum blockchain.",
         waveHeadline3: "You can wave once every 24 hours. Happy waving !",
         yourTotalWaves: "Your total waves : ",

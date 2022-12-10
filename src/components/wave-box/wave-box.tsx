@@ -12,12 +12,13 @@ const WaveBox = () => {
 
   const metamaskProvider = useMetamaskProvider();
   const metamaskAccount = useStore(state => state.metamaskAccount);
+  const setShowModal = useStore(state => state.setShowModal);
 
   const [loading, setLoading] = useState(false);
 
   const wave = () => {
     if (!metamaskAccount) {
-      // TODO: modal
+      setShowModal(true, t("modal.error"), [t("errors.notConnected1"), t("errors.notConnected2")]);
     } else {
       setLoading(true);
       metamaskProvider.wave().finally(() => setLoading(false));

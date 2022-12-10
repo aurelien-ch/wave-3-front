@@ -7,7 +7,7 @@ interface ModalProps {
   open: boolean,
   setOpen: Function,
   title: string,
-  content: string,
+  content: string[],
 }
 
 const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
@@ -42,8 +42,14 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
         {title}
       </div>
       <div className="basic-modal-content">
-        {content
-        }</div>
+        {
+          content.map((line: string, index: number) => (
+            <div className={index < content.length - 1 ? "margin-bottom-10" : ""}>
+              {line}
+            </div>
+          ))
+        }
+      </div>
       <div
         className="basic-modal-close-button"
         onClick={() => setOpen(false)}
