@@ -47,6 +47,14 @@ class MetamaskProvider {
     }
   }
 
+  getSenderWaves = async () => {
+    try {
+      return BigNumber.from(await this.contract.getSenderWaves()).toNumber();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   getTotalWaves = async () => {
     try {
       return BigNumber.from(await this.contract.getTotalWaves()).toNumber();
@@ -60,6 +68,9 @@ class MetamaskProvider {
       const waveTxn = await this.contract.wave();
 
       await waveTxn.wait();
+
+      useStore.getState().setSenderWaves(useStore.getState().senderWaves + 1);
+      useStore.getState().setTotalWaves(useStore.getState().totalWaves + 1);
     } catch (error: any) {
       if (error.code !== "ACTION_REJECTED") {
         useStore.getState().setShowModal(true,

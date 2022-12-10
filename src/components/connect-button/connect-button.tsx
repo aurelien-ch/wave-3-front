@@ -7,8 +7,8 @@ import "./connect-button.css";
 
 const ConnectButton = () => {
   const { t } = useTranslation();
-
   const metamaskProvider = useMetamaskProvider();
+
   const metamaskAccount = useStore(state => state.metamaskAccount);
 
   const formatAddress = (address: string) => {

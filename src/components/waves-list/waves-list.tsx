@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useStore } from "../../providers/state/state-provider";
@@ -8,11 +8,11 @@ import "./waves-list.css";
 
 const WavesList = () => {
   const { t } = useTranslation();
-
   const metamaskProvider = useMetamaskProvider();
-  const metamaskAccount = useStore(state => state.metamaskAccount);
 
-  const [totalWaves, setTotalWaves] = useState(0);
+  const metamaskAccount = useStore(state => state.metamaskAccount);
+  const totalWaves = useStore(state => state.totalWaves);
+  const setTotalWaves = useStore(state => state.setTotalWaves);
 
   useEffect(() => {
     if (metamaskAccount) {
@@ -20,7 +20,7 @@ const WavesList = () => {
         setTotalWaves(waves!);
       });
     }
-  }, [metamaskAccount, metamaskProvider]);
+  }, [metamaskAccount, metamaskProvider, setTotalWaves]);
 
   return (
     <div className="waves-list">

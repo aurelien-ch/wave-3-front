@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
@@ -9,12 +9,24 @@ import "./wave-box.css";
 
 const WaveBox = () => {
   const { t } = useTranslation();
-
   const metamaskProvider = useMetamaskProvider();
+
   const metamaskAccount = useStore(state => state.metamaskAccount);
   const setShowModal = useStore(state => state.setShowModal);
+  const senderWaves = useStore(state => state.senderWaves);
+  const setSenderWaves = useStore(state => state.setSenderWaves);
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (metamaskAccount) {
+      metamaskProvider.getSenderWaves().then(waves => {
+        setSenderWaves(waves!);
+      });
+    } else {
+      setSenderWaves(0);
+    }
+  }, [metamaskAccount, metamaskProvider, setSenderWaves]);
 
   const wave = () => {
     if (!metamaskAccount) {
@@ -47,7 +59,7 @@ const WaveBox = () => {
             <div className="user-total-waves-label">
               {t("waveBox.yourTotalWaves")}
               <span className="font-bold">
-                12
+                {senderWaves}
               </span>
             </div>
             <div
