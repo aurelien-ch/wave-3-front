@@ -18,8 +18,6 @@ const App = () => {
   const modalContent = useStore(state => state.modalContent);
 
   useEffect(() => {
-    console.log("USE_EFFECT APP");
-
     if (metamaskProvider.getEthereum()) {
       metamaskProvider.findConnectedAccount();
     }

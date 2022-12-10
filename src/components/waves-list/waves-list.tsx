@@ -15,8 +15,6 @@ const WavesList = () => {
   const [totalWaves, setTotalWaves] = useState(0);
 
   useEffect(() => {
-    console.log("USE_EFFECT WAVES_LIST");
-
     if (metamaskAccount) {
       metamaskProvider.getTotalWaves().then(waves => {
         setTotalWaves(waves!);
