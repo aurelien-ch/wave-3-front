@@ -62,7 +62,7 @@ class MetamaskProvider {
       await waveTxn.wait();
     } catch (error: any) {
       if (error.code !== "ACTION_REJECTED") {
-        useStore.getState().setShowModal(true, i18n.t("modal.error"), error.reason);
+        useStore.getState().setShowModal(true, i18n.t("modal.error"), error.reason.replace("execution reverted: ", ""));
       }
 
       console.error(error);

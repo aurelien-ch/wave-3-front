@@ -17,7 +17,7 @@ const WaveBox = () => {
 
   const wave = () => {
     if (!metamaskAccount) {
-      // modal
+      // TODO: modal
     } else {
       setLoading(true);
       metamaskProvider.wave().finally(() => setLoading(false));

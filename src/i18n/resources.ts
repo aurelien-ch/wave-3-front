@@ -3,6 +3,7 @@ const resources = {
     translation: {
       modal: {
         error: "Error",
+        close: "Close",
       },
       header: {
         connect: "Connect",

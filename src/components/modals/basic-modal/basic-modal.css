@@ -1,3 +1,21 @@
 .basic-modal-title {
   font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.basic-modal-content {
+  margin-bottom: 20px;
+}
+
+.basic-modal-close-button {
+  float: right;
+  background-color: #042402;
+  padding: 15px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.basic-modal-close-button:hover {
+  transform: scale(1.05);
 }
