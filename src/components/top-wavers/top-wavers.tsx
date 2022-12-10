@@ -7,7 +7,9 @@ const TopWavers = () => {
 
   return (
     <div className="top-wavers">
-      <div>{t("wavesList")}</div>
+      <div className="top-wavers-label font-bold">
+        {t("topWavers.topWavers")}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { ethers, BigNumber } from "ethers";
+import i18n from "i18next";
 
 import { useStore } from "./state/state-provider";
 import contractABI from "../contract/wave-3.json";
@@ -57,11 +58,13 @@ class MetamaskProvider {
   wave = async () => {
     try {
       const waveTxn = await this.contract.wave();
-      console.log("Mining...", waveTxn.hash);
 
       await waveTxn.wait();
-      console.log("Mined --", waveTxn.hash);
-    } catch (error) {
+    } catch (error: any) {
+      if (error.code !== "ACTION_REJECTED") {
+        useStore.getState().setShowModal(true, i18n.t("modal.error"), error.reason);
+      }
+
       console.error(error);
     }
   }

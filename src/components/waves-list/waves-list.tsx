@@ -15,6 +15,8 @@ const WavesList = () => {
   const [totalWaves, setTotalWaves] = useState(0);
 
   useEffect(() => {
+    console.log("USE_EFFECT WAVES_LIST");
+
     if (metamaskAccount) {
       metamaskProvider.getTotalWaves().then(waves => {
         setTotalWaves(waves!);
@@ -26,10 +28,10 @@ const WavesList = () => {
     <div className="waves-list">
       <div className="flex justify-between font-bold">
         <div className="all-waves-label">
-          {t("allWaves")}
+          {t("wavesList.allWaves")}
         </div>
         <div className="total-waves-container flex align-center">
-          {t("total")}
+          {t("wavesList.total")}
           {totalWaves}
         </div>
       </div>
