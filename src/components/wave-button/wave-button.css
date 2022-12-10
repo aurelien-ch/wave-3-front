@@ -1,0 +1,22 @@
+.wave-button {
+  position: relative;
+  font-size: 20px;
+  width: fit-content;
+  background-color: #0c320a;
+  padding: 15px 30px;
+  border-radius: 20px;
+  margin-top: 17px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.wave-button:hover {
+  transform: scale(1.05);
+}
+
+.wave-button-loading-spinner {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import PropagateLoader from "react-spinners/PropagateLoader";
 
 import { useStore } from "../../providers/state/state-provider";
 import { useMetamaskProvider } from "../../providers/metamask-provider";
+import WaveButton from "../wave-button/wave-button";
 
 import "./wave-box.css";
 
@@ -12,11 +12,8 @@ const WaveBox = () => {
   const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
-  const setShowModal = useStore(state => state.setShowModal);
   const senderWaves = useStore(state => state.senderWaves);
   const setSenderWaves = useStore(state => state.setSenderWaves);
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (metamaskAccount) {
@@ -27,15 +24,6 @@ const WaveBox = () => {
       setSenderWaves(0);
     }
   }, [metamaskAccount, metamaskProvider, setSenderWaves]);
-
-  const wave = () => {
-    if (!metamaskAccount) {
-      setShowModal(true, t("modal.error"), [t("errors.notConnected1"), t("errors.notConnected2")]);
-    } else {
-      setLoading(true);
-      metamaskProvider.wave().finally(() => setLoading(false));
-    }
-  };
 
   return (
     <div>
@@ -62,20 +50,7 @@ const WaveBox = () => {
                 {senderWaves}
               </span>
             </div>
-            <div
-              className="wave-at-me-button"
-              onClick={wave}
-            >
-              <div className={loading ? "opacity-0" : ""}>
-                {t("waveBox.waveAtMe")} 👋
-              </div>
-              <div className="wave-loading-spinner">
-                <PropagateLoader
-                  color="#0c8314"
-                  loading={loading}
-                />
-              </div>
-            </div>
+            <WaveButton />
           </div>
         </div>
       </div>

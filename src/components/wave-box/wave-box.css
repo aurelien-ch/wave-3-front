@@ -14,26 +14,3 @@
 .wave-box .user-total-waves-label {
   margin-right: 5px;
 }
-
-.wave-box .wave-at-me-button {
-  position: relative;
-  font-size: 20px;
-  width: fit-content;
-  background-color: #0c320a;
-  padding: 15px 30px;
-  border-radius: 20px;
-  margin-top: 17px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.wave-box .wave-at-me-button:hover {
-  transform: scale(1.05);
-}
-
-.wave-box .wave-loading-spinner {
-  position: absolute;
-  top: 38%;
-  left: 47%;
-  transform: translate(-50%, -50%);
-}
