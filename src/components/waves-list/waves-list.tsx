@@ -11,18 +11,18 @@ const WavesList = () => {
   const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
-  const totalWaves = useStore(state => state.totalWaves);
-  const setTotalWaves = useStore(state => state.setTotalWaves);
+  const totalWavesCount = useStore(state => state.totalWavesCount);
+  const setTotalWavesCount = useStore(state => state.setTotalWavesCount);
 
   useEffect(() => {
     if (metamaskAccount) {
-      metamaskProvider.getTotalWaves().then(waves => {
-        setTotalWaves(waves!);
+      metamaskProvider.getTotalWavesCount().then(waves => {
+        setTotalWavesCount(waves!);
       });
     } else {
-      setTotalWaves(undefined);
+      setTotalWavesCount(undefined);
     }
-  }, [metamaskAccount, metamaskProvider, setTotalWaves]);
+  }, [metamaskAccount, metamaskProvider, setTotalWavesCount]);
 
   return (
     <div className="waves-list">
@@ -32,7 +32,7 @@ const WavesList = () => {
         </div>
         <div className={`total-waves-container flex align-center ${!metamaskAccount ? "opacity-0-3" : ""}`}>
           {t("wavesList.total")}
-          {totalWaves ?? "-"}
+          {totalWavesCount ?? "-"}
         </div>
       </div>
     </div>

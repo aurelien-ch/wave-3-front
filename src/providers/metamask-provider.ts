@@ -47,17 +47,17 @@ class MetamaskProvider {
     }
   }
 
-  getSenderWaves = async () => {
+  getSenderWavesCount = async () => {
     try {
-      return BigNumber.from(await this.contract.getSenderWaves()).toNumber();
+      return BigNumber.from(await this.contract.getSenderWavesCount()).toNumber();
     } catch (error) {
       console.error(error);
     }
   }
 
-  getTotalWaves = async () => {
+  getTotalWavesCount = async () => {
     try {
-      return BigNumber.from(await this.contract.getTotalWaves()).toNumber();
+      return BigNumber.from(await this.contract.getTotalWavesCount()).toNumber();
     } catch (error) {
       console.error(error);
     }
@@ -69,8 +69,8 @@ class MetamaskProvider {
 
       await waveTxn.wait();
 
-      useStore.getState().setSenderWaves(useStore.getState().senderWaves! + 1);
-      useStore.getState().setTotalWaves(useStore.getState().totalWaves! + 1);
+      useStore.getState().setSenderWavesCount(useStore.getState().senderWavesCount! + 1);
+      useStore.getState().setTotalWavesCount(useStore.getState().totalWavesCount! + 1);
     } catch (error: any) {
       if (error.code !== "ACTION_REJECTED") {
         useStore.getState().setShowModal(true,

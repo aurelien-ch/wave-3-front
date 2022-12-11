@@ -2,8 +2,8 @@ import create from "zustand";
 
 import { setMetamaskAccount } from "./actions/set-metamask-account";
 import { setShowModal } from "./actions/set-show-modal";
-import { setSenderWaves } from "./actions/set-sender-waves";
-import { setTotalWaves } from "./actions/set-total-waves";
+import { setSenderWavesCount } from "./actions/set-sender-waves-count";
+import { setTotalWavesCount } from "./actions/set-total-waves-count";
 
 export type State = {
   // Metamask Account
@@ -15,10 +15,10 @@ export type State = {
   modalTitle: string,
   modalContent: string[],
   // Waves Counts
-  senderWaves: number | undefined,
-  setSenderWaves: (wavesCount: number | undefined) => void,
-  totalWaves: number | undefined,
-  setTotalWaves: (wavesCount: number | undefined) => void,
+  senderWavesCount: number | undefined,
+  setSenderWavesCount: (wavesCount: number | undefined) => void,
+  totalWavesCount: number | undefined,
+  setTotalWavesCount: (wavesCount: number | undefined) => void,
 }
 
 export const initialState = ((set: any) => ({
@@ -31,10 +31,10 @@ export const initialState = ((set: any) => ({
   modalTitle: "",
   modalContent: [],
   // Waves Counts
-  senderWaves: undefined,
-  setSenderWaves: (wavesCount: number | undefined) => setSenderWaves(set)(wavesCount),
-  totalWaves: undefined,
-  setTotalWaves: (wavesCount: number | undefined) => setTotalWaves(set)(wavesCount),
+  senderWavesCount: undefined,
+  setSenderWavesCount: (wavesCount: number | undefined) => setSenderWavesCount(set)(wavesCount),
+  totalWavesCount: undefined,
+  setTotalWavesCount: (wavesCount: number | undefined) => setTotalWavesCount(set)(wavesCount),
 }));
 
 export const useStore = create<State>((set) => initialState(set));

@@ -12,18 +12,18 @@ const WaveBox = () => {
   const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
-  const senderWaves = useStore(state => state.senderWaves);
-  const setSenderWaves = useStore(state => state.setSenderWaves);
+  const senderWavesCount = useStore(state => state.senderWavesCount);
+  const setSenderWavesCount = useStore(state => state.setSenderWavesCount);
 
   useEffect(() => {
     if (metamaskAccount) {
-      metamaskProvider.getSenderWaves().then(waves => {
-        setSenderWaves(waves!);
+      metamaskProvider.getSenderWavesCount().then(waves => {
+        setSenderWavesCount(waves!);
       });
     } else {
-      setSenderWaves(undefined);
+      setSenderWavesCount(undefined);
     }
-  }, [metamaskAccount, metamaskProvider, setSenderWaves]);
+  }, [metamaskAccount, metamaskProvider, setSenderWavesCount]);
 
   return (
     <div>
@@ -47,7 +47,7 @@ const WaveBox = () => {
             <div className={`user-total-waves-label ${!metamaskAccount ? "opacity-0-2" : ""}`}>
               {t("waveBox.yourTotalWaves")}
               <span className="font-bold">
-                {senderWaves ?? "-"}
+                {senderWavesCount ?? "-"}
               </span>
             </div>
             <WaveButton />
