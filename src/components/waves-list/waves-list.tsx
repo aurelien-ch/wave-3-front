@@ -1,28 +1,14 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useStore } from "../../providers/state/state-provider";
-import { useMetamaskProvider } from "../../providers/metamask-provider";
 
 import "./waves-list.css";
 
 const WavesList = () => {
   const { t } = useTranslation();
-  const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
   const totalWavesCount = useStore(state => state.totalWavesCount);
-  const setTotalWavesCount = useStore(state => state.setTotalWavesCount);
-
-  useEffect(() => {
-    if (metamaskAccount) {
-      metamaskProvider.getTotalWavesCount().then(waves => {
-        setTotalWavesCount(waves!);
-      });
-    } else {
-      setTotalWavesCount(undefined);
-    }
-  }, [metamaskAccount, metamaskProvider, setTotalWavesCount]);
 
   return (
     <div className="waves-list">

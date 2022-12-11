@@ -19,8 +19,14 @@ class MetamaskProvider {
     this.ethereum.addListener("accountsChanged", this.onAccountsChanged);
   }
 
-  private onAccountsChanged(accounts: string[]) {
-    useStore.getState().setMetamaskAccount(accounts[0] ?? undefined);
+  private setStateData = async (account: string | undefined) => {
+    useStore.getState().setMetamaskAccount(account ?? undefined);
+    useStore.getState().setSenderWavesCount(account ? await this.getSenderWavesCount() : undefined);
+    useStore.getState().setTotalWavesCount(account ? await this.getTotalWavesCount() : undefined);
+  }
+
+  private onAccountsChanged = async (accounts: string[]) => {
+    this.setStateData(accounts[0]);
   }
 
   findConnectedAccount = async () => {
@@ -28,7 +34,7 @@ class MetamaskProvider {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
       if (accounts.length) {
-        useStore.getState().setMetamaskAccount(accounts[0]);
+        this.setStateData(accounts[0]);
       }
     } catch (error) {
       console.error(error);
@@ -68,9 +74,7 @@ class MetamaskProvider {
       const waveTxn = await this.contract.wave();
 
       await waveTxn.wait();
-
-      useStore.getState().setSenderWavesCount(useStore.getState().senderWavesCount! + 1);
-      useStore.getState().setTotalWavesCount(useStore.getState().totalWavesCount! + 1);
+      this.setStateData(useStore.getState().metamaskAccount);
     } catch (error: any) {
       if (error.code !== "ACTION_REJECTED") {
         useStore.getState().setShowModal(true,

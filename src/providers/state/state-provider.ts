@@ -8,7 +8,7 @@ import { setTotalWavesCount } from "./actions/set-total-waves-count";
 export type State = {
   // Metamask Account
   metamaskAccount: string | undefined,
-  setMetamaskAccount: (account: string) => void,
+  setMetamaskAccount: (account: string | undefined) => void,
   // Modal
   showModal: boolean,
   setShowModal: (showModal: boolean, modalTitle: string, modalContent: string[]) => void,

@@ -1,29 +1,15 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useStore } from "../../providers/state/state-provider";
-import { useMetamaskProvider } from "../../providers/metamask-provider";
 import WaveButton from "../wave-button/wave-button";
 
 import "./wave-box.css";
 
 const WaveBox = () => {
   const { t } = useTranslation();
-  const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
   const senderWavesCount = useStore(state => state.senderWavesCount);
-  const setSenderWavesCount = useStore(state => state.setSenderWavesCount);
-
-  useEffect(() => {
-    if (metamaskAccount) {
-      metamaskProvider.getSenderWavesCount().then(waves => {
-        setSenderWavesCount(waves!);
-      });
-    } else {
-      setSenderWavesCount(undefined);
-    }
-  }, [metamaskAccount, metamaskProvider, setSenderWavesCount]);
 
   return (
     <div>
