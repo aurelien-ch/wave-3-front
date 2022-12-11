@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import dateFormat from "dateformat";
 
 import { useStore } from "../../providers/state/state-provider";
 import { useMetamaskProvider } from "../../providers/metamask-provider";
@@ -31,7 +32,7 @@ const WavesList = () => {
             waves.map((wave: Wave) => (
               <div className="wave-container flex justify-between">
                 <div>{metamaskProvider.formatAddress(wave.waverAddr)}</div>
-                <div>{new Date(wave.timestamp * 1000).toLocaleString()}</div>
+                <div>{dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}</div>
               </div>
             ))
             : null

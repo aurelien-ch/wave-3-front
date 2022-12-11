@@ -19,6 +19,7 @@ class MetamaskProvider {
 
     this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
     this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
+    this.contract.on("NewWave", this.newWaveUpdate);
   }
 
   // Utils
@@ -31,9 +32,15 @@ class MetamaskProvider {
     useStore.getState().setMetamaskAccount(account ?? undefined);
     useStore.getState().setSenderWavesCount(account ? await this.getSenderWavesCount() : undefined);
     useStore.getState().setTotalWavesCount(account ? await this.getTotalWavesCount() : undefined);
-    console.log(await this.getWaves());
-
     useStore.getState().setWaves(account ? await this.getWaves() : undefined);
+  }
+
+  private newWaveUpdate = () => {
+    const metamaskAccount = useStore.getState().metamaskAccount;
+
+    if (metamaskAccount) {
+      this.setStateData(metamaskAccount);
+    }
   }
 
   // Ethereum interactions
