@@ -4,6 +4,8 @@ import i18n from "i18next";
 import { useStore } from "./state/state-provider";
 import contractABI from "../contract/wave-3.json";
 
+import { Wave } from "./types";
+
 class MetamaskProvider {
   private ethereum = window.ethereum;
   private contractAddress = window.env.CONTRACT_ADDRESS;
@@ -16,20 +18,27 @@ class MetamaskProvider {
     const signer = provider.getSigner();
 
     this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
-    this.ethereum.addListener("accountsChanged", this.onAccountsChanged);
+    this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
+  }
+
+  // Utils
+
+  formatAddress = (address: string): string => {
+    return address.substring(0, 6) + "..." + address.substring(address.length - 4);
   }
 
   private setStateData = async (account: string | undefined) => {
     useStore.getState().setMetamaskAccount(account ?? undefined);
     useStore.getState().setSenderWavesCount(account ? await this.getSenderWavesCount() : undefined);
     useStore.getState().setTotalWavesCount(account ? await this.getTotalWavesCount() : undefined);
+    console.log(await this.getWaves());
+
+    useStore.getState().setWaves(account ? await this.getWaves() : undefined);
   }
 
-  private onAccountsChanged = async (accounts: string[]) => {
-    this.setStateData(accounts[0]);
-  }
+  // Ethereum interactions
 
-  findConnectedAccount = async () => {
+  findConnectedAccount = async (): Promise<void> => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
@@ -41,7 +50,7 @@ class MetamaskProvider {
     }
   }
 
-  connectAccount = async () => {
+  connectAccount = async (): Promise<void> => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_requestAccounts" });
 
@@ -53,7 +62,9 @@ class MetamaskProvider {
     }
   }
 
-  getSenderWavesCount = async () => {
+  // Contract interactions
+
+  getSenderWavesCount = async (): Promise<number | undefined> => {
     try {
       return BigNumber.from(await this.contract.getSenderWavesCount()).toNumber();
     } catch (error) {
@@ -61,7 +72,7 @@ class MetamaskProvider {
     }
   }
 
-  getTotalWavesCount = async () => {
+  getTotalWavesCount = async (): Promise<number | undefined> => {
     try {
       return BigNumber.from(await this.contract.getTotalWavesCount()).toNumber();
     } catch (error) {
@@ -69,7 +80,16 @@ class MetamaskProvider {
     }
   }
 
-  wave = async () => {
+  getWaves = async (): Promise<Wave[] | undefined> => {
+    try {
+      return (await this.contract.getWaves())
+        .map(({ waverAddr, timestamp }: any) => ({ waverAddr, timestamp }));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  wave = async (): Promise<void> => {
     try {
       const waveTxn = await this.contract.wave();
 

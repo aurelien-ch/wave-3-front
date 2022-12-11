@@ -16,3 +16,14 @@
   border-radius: 6px;
   padding: 5px 12px;
 }
+
+.waves-list .waves-container {
+  margin-top: 15px;
+}
+
+.waves-list .wave-container {
+  background-color: #0e3a0b;
+  border-radius: 6px;
+  padding: 5px 12px;
+  margin-top: 10px;
+}

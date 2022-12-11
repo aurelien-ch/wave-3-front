@@ -11,16 +11,12 @@ const ConnectButton = () => {
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
 
-  const formatAddress = (address: string) => {
-    return address.substring(0, 6) + "..." + address.substring(address.length - 4);
-  }
-
   return (
     <div
       className={`connect-button ${metamaskAccount ? "connected" : ""}`}
       onClick={metamaskProvider.connectAccount}
     >
-      {metamaskAccount ? formatAddress(metamaskAccount) : t("header.connect")}
+      {metamaskAccount ? metamaskProvider.formatAddress(metamaskAccount) : t("header.connect")}
       {
         !metamaskAccount && (
           <img
