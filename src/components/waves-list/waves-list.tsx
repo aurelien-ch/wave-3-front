@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import dateFormat from "dateformat";
 
@@ -15,6 +16,15 @@ const WavesList = () => {
   const totalWavesCount = useStore(state => state.totalWavesCount);
   const waves = useStore(state => state.waves);
 
+  const setWaves = useStore(state => state.setWaves);
+  const offset = useStore(state => state.offset);
+  const setOffset = useStore(state => state.setOffset);
+  const limit = useStore(state => state.limit);
+
+  useEffect(() => {
+    metamaskProvider.getWaves().then((waves: Wave[] | undefined) => setWaves(waves));
+  }, [metamaskProvider, offset, setWaves]);
+
   return (
     <div className="waves-list">
       <div className="flex justify-between font-bold">
@@ -28,7 +38,7 @@ const WavesList = () => {
       </div>
       <div className="waves-container">
         {
-          waves ? (
+          metamaskAccount && waves ? (
             waves.map((wave: Wave, index: number) => (
               <div
                 key={index}
@@ -44,6 +54,20 @@ const WavesList = () => {
             </div>
           )
         }
+      </div>
+      <div className="pagination-buttons-container flex justify-between">
+        <div
+          className="pagination-button"
+          onClick={() => setOffset(offset - limit)}
+        >
+          {t("wavesList.previous")}
+        </div>
+        <div
+          className="pagination-button"
+          onClick={() => setOffset(offset + limit)}
+        >
+          {t("wavesList.next")}
+        </div>
       </div>
     </div>
   );

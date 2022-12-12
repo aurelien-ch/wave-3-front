@@ -12,17 +12,17 @@
 
 .waves-list .total-waves-container {
   font-size: 15px;
-  background-color: #0e3a0b;
+  background-color: #0c320a;
   border-radius: 6px;
   padding: 5px 12px;
 }
 
 .waves-list .waves-container {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .waves-list .wave-container {
-  background-color: #0e3a0b;
+  background-color: #0c320a;
   border-radius: 6px;
   padding: 5px 12px;
   margin-top: 10px;
@@ -33,4 +33,20 @@
   font-size: 14px;
   padding-top: 5px;
   padding-bottom: 12px;
+}
+
+.waves-list .pagination-buttons-container {
+  margin-top: 20px;
+}
+
+.waves-list .pagination-button {
+  background-color: #0c320a;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.waves-list .pagination-button:hover {
+  transform: scale(1.07);
 }

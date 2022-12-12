@@ -89,7 +89,10 @@ class MetamaskProvider {
 
   getWaves = async (): Promise<Wave[] | undefined> => {
     try {
-      return (await this.contract.getWaves())
+      const offset = useStore.getState().offset;
+      const limit = useStore.getState().limit;
+
+      return (await this.contract.getWaves(offset, limit))
         .map(({ waverAddr, timestamp }: any) => ({ waverAddr, timestamp }));
     } catch (error) {
       console.error(error);

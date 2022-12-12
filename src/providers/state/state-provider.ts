@@ -5,8 +5,10 @@ import { setShowModal } from "./actions/set-show-modal";
 import { setSenderWavesCount } from "./actions/set-sender-waves-count";
 import { setTotalWavesCount } from "./actions/set-total-waves-count";
 import { setWaves } from "./actions/set-waves";
+import { setOffset } from "./actions/set-offset";
+import { setLimit } from "./actions/set-limit";
 
-import { Wave } from "../types";
+import { WAVE_LIST_LIMIT, Wave } from "../types";
 
 export type State = {
   // Metamask Account
@@ -23,6 +25,10 @@ export type State = {
   totalWavesCount: number | undefined,
   setTotalWavesCount: (wavesCount: number | undefined) => void,
   // Waves
+  offset: number,
+  setOffset: (offset: number) => void,
+  limit: number,
+  setLimit: (limit: number) => void,
   waves: Wave[] | undefined,
   setWaves: (waves: Wave[] | undefined) => void,
 }
@@ -42,6 +48,10 @@ export const initialState = ((set: any) => ({
   totalWavesCount: undefined,
   setTotalWavesCount: (wavesCount: number | undefined) => setTotalWavesCount(set)(wavesCount),
   // Waves
+  offset: 0,
+  setOffset: (offset: number) => setOffset(set)(offset),
+  limit: WAVE_LIST_LIMIT,
+  setLimit: (limit: number) => setLimit(set)(limit),
   waves: undefined,
   setWaves: (waves: Wave[] | undefined) => setWaves(set)(waves),
 }));
