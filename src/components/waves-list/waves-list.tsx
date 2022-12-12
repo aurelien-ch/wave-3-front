@@ -29,8 +29,11 @@ const WavesList = () => {
       <div className="waves-container">
         {
           waves ?
-            waves.map((wave: Wave) => (
-              <div className="wave-container flex justify-between">
+            waves.map((wave: Wave, index: number) => (
+              <div
+                key={index}
+                className="wave-container flex justify-between"
+              >
                 <div>{metamaskProvider.formatAddress(wave.waverAddr)}</div>
                 <div>{dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}</div>
               </div>
