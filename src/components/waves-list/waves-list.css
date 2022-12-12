@@ -50,3 +50,8 @@
 .waves-list .pagination-button:hover {
   transform: scale(1.07);
 }
+
+.waves-list .pagination-button.disabled {
+  opacity: .5;
+  pointer-events: none;
+}

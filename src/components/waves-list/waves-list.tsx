@@ -57,13 +57,13 @@ const WavesList = () => {
       </div>
       <div className="pagination-buttons-container flex justify-between">
         <div
-          className="pagination-button"
+          className={`pagination-button ${offset === 0 ? "disabled" : ""}`}
           onClick={() => setOffset(offset - limit)}
         >
           {t("wavesList.previous")}
         </div>
         <div
-          className="pagination-button"
+          className={`pagination-button ${offset + limit > totalWavesCount! ? "disabled" : ""}`}
           onClick={() => setOffset(offset + limit)}
         >
           {t("wavesList.next")}
