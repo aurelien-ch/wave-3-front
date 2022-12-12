@@ -24,7 +24,7 @@ const resources = {
         total: "Total : ",
         waver: "Waver",
         date: "Date",
-        previous: "Previous",
+        prev: "Prev",
         next: "Next",
         pleaseConnect: "Please connect your wallet to see all waves !",
       },

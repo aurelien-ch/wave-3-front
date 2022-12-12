@@ -49,7 +49,12 @@
   margin-top: 20px;
 }
 
+.waves-list .pagination-buttons-container>div {
+  flex: 1 0 0;
+}
+
 .waves-list .pagination-button {
+  width: fit-content;
   background-color: #0c320a;
   border-radius: 10px;
   padding: 10px 20px;
@@ -64,4 +69,9 @@
 .waves-list .pagination-button.disabled {
   opacity: .5;
   pointer-events: none;
+}
+
+.waves-list .pagination-counter {
+  font-size: 13px;
+  opacity: .7;
 }
