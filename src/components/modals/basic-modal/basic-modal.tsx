@@ -44,7 +44,10 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
       <div className="basic-modal-content">
         {
           content.map((line: string, index: number) => (
-            <div className={index < content.length - 1 ? "margin-bottom-10" : ""}>
+            <div
+              key={index}
+              className={index < content.length - 1 ? "margin-bottom-10" : ""}
+            >
               {line}
             </div>
           ))
