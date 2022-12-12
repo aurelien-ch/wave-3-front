@@ -22,10 +22,19 @@
 }
 
 .waves-list .wave-container {
-  background-color: #0c320a;
-  border-radius: 6px;
-  padding: 5px 12px;
+  border: 1px solid #295d29;
+  border-radius: 10px;
+  padding: 10px 20px;
   margin-top: 10px;
+}
+
+.waves-list .wave-container>div {
+  flex: 1 0 0;
+}
+
+.waves-list .wave-property-name {
+  color: #4b7948;
+  font-size: 15px;
 }
 
 .waves-list .please-connect-label {

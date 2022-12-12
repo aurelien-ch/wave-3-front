@@ -42,10 +42,24 @@ const WavesList = () => {
             waves.map((wave: Wave, index: number) => (
               <div
                 key={index}
-                className="wave-container flex justify-between"
+                className="wave-container flex"
               >
-                <div>{metamaskProvider.formatAddress(wave.waverAddr)}</div>
-                <div>{dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}</div>
+                <div>
+                  <div className="wave-property-name font-bold">
+                    {t("wavesList.waver")}
+                  </div>
+                  <div>
+                    {metamaskProvider.formatAddress(wave.waverAddr)}
+                  </div>
+                </div>
+                <div>
+                  <div className="wave-property-name font-bold">
+                    {t("wavesList.date")}
+                  </div>
+                  <div>
+                    {dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}
+                  </div>
+                </div>
               </div>
             ))
           ) : (
@@ -63,7 +77,7 @@ const WavesList = () => {
           {t("wavesList.previous")}
         </div>
         <div
-          className={`pagination-button ${offset + limit > totalWavesCount! ? "disabled" : ""}`}
+          className={`pagination-button ${offset + limit > totalWavesCount! - 1 ? "disabled" : ""}`}
           onClick={() => setOffset(offset + limit)}
         >
           {t("wavesList.next")}
