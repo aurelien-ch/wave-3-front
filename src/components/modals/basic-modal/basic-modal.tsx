@@ -21,6 +21,7 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
       backgroundColor: "#022906",
       border: "none",
       borderRadius: 15,
+      padding: "25px 35px",
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",

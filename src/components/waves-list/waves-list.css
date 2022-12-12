@@ -27,3 +27,10 @@
   padding: 5px 12px;
   margin-top: 10px;
 }
+
+.waves-list .please-connect-label {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 12px;
+}

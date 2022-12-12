@@ -28,7 +28,7 @@ const WavesList = () => {
       </div>
       <div className="waves-container">
         {
-          waves ?
+          waves ? (
             waves.map((wave: Wave, index: number) => (
               <div
                 key={index}
@@ -38,7 +38,11 @@ const WavesList = () => {
                 <div>{dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}</div>
               </div>
             ))
-            : null
+          ) : (
+            <div className="please-connect-label">
+              {t("wavesList.pleaseConnect")}
+            </div>
+          )
         }
       </div>
     </div>

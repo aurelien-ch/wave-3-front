@@ -22,9 +22,11 @@ const resources = {
       wavesList: {
         allWaves: "All waves",
         total: "Total : ",
+        pleaseConnect: "Please connect your wallet to see all waves !",
       },
       topWavers: {
         topWavers: "Top Wavers",
+        pleaseConnect: "Please connect your wallet to see the top wavers !",
       }
     }
   }
