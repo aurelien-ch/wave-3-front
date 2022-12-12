@@ -33,8 +33,9 @@
 }
 
 .waves-list .wave-property-name {
-  color: #4b7948;
-  font-size: 15px;
+  color: #295d29;
+  font-size: 14px;
+  margin-bottom: 3px;
 }
 
 .waves-list .please-connect-label {

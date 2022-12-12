@@ -45,7 +45,7 @@ const WavesList = () => {
                 className="wave-container flex"
               >
                 <div>
-                  <div className="wave-property-name font-bold">
+                  <div className="wave-property-name">
                     {t("wavesList.waver")}
                   </div>
                   <div>
@@ -53,7 +53,7 @@ const WavesList = () => {
                   </div>
                 </div>
                 <div>
-                  <div className="wave-property-name font-bold">
+                  <div className="wave-property-name">
                     {t("wavesList.date")}
                   </div>
                   <div>
