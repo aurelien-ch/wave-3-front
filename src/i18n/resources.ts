@@ -26,6 +26,7 @@ const resources = {
         date: "Date",
         prev: "Prev",
         next: "Next",
+        noWavesYet: "No waves yet",
         pleaseConnect: "Please connect your wallet to see all waves !",
       },
       topWavers: {

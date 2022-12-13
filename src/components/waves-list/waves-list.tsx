@@ -38,7 +38,7 @@ const WavesList = () => {
       </div>
       <div className="waves-container">
         {
-          metamaskAccount && waves ? (
+          metamaskAccount ? waves && waves.length ? (
             waves.map((wave: Wave, index: number) => (
               <div
                 key={index}
@@ -64,34 +64,42 @@ const WavesList = () => {
             ))
           ) : (
             <div className="please-connect-label">
+              {t("wavesList.noWavesYet")} 🙁
+            </div>
+          ) : (
+            <div className="please-connect-label">
               {t("wavesList.pleaseConnect")}
             </div>
           )
         }
       </div>
-      <div className="pagination-buttons-container flex align-center">
-        <div>
-          <div
-            className={`pagination-button  ${offset === 0 ? "disabled" : ""}`}
-            onClick={() => setOffset(offset - limit)}
-          >
-            {t("wavesList.prev")}
+      {
+        metamaskAccount && waves && waves.length ? (
+          <div className="pagination-buttons-container flex align-center">
+            <div>
+              <div
+                className={`pagination-button  ${offset === 0 ? "disabled" : ""}`}
+                onClick={() => setOffset(offset - limit)}
+              >
+                {t("wavesList.prev")}
+              </div>
+            </div>
+            <div>
+              <div className="pagination-counter flex justify-center">
+                {(offset / limit) + 1} / {Math.ceil(totalWavesCount! / limit)}
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div
+                className={`pagination-button ${offset + limit > totalWavesCount! - 1 ? "disabled" : ""}`}
+                onClick={() => setOffset(offset + limit)}
+              >
+                {t("wavesList.next")}
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="pagination-counter flex justify-center">
-            {(offset / limit) + 1} / {Math.ceil(totalWavesCount! / limit)}
-          </div>
-        </div>
-        <div className="flex justify-end">
-          <div
-            className={`pagination-button ${offset + limit > totalWavesCount! - 1 ? "disabled" : ""}`}
-            onClick={() => setOffset(offset + limit)}
-          >
-            {t("wavesList.next")}
-          </div>
-        </div>
-      </div>
+        ) : null
+      }
     </div>
   );
 };
