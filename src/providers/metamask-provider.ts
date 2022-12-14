@@ -4,7 +4,7 @@ import i18n from "i18next";
 import { useStore } from "./state/state-provider";
 import contractABI from "../contract/wave-3.json";
 
-import { Wave } from "./types";
+import { Wave, TopWaver } from "./types";
 
 class MetamaskProvider {
   private ethereum = window.ethereum;
@@ -33,6 +33,7 @@ class MetamaskProvider {
     useStore.getState().setSenderWavesCount(account ? await this.getSenderWavesCount() : undefined);
     useStore.getState().setTotalWavesCount(account ? await this.getTotalWavesCount() : undefined);
     useStore.getState().setWaves(account ? await this.getWaves() : undefined);
+    useStore.getState().setTopWavers(account ? await this.getTopWavers() : undefined);
   }
 
   private newWaveUpdate = () => {
@@ -94,6 +95,21 @@ class MetamaskProvider {
 
       return (await this.contract.getWaves(offset, limit))
         .map(({ waverAddr, timestamp }: any) => ({ waverAddr, timestamp }));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  getTopWavers = async (): Promise<TopWaver[] | undefined> => {
+    try {
+      return (await this.contract.getTopWavers())
+        .filter((e: any) => e.length)
+        .map(({ addr, wavesCount, lastWaveTimestamp }: any) => ({
+          addr,
+          wavesCount: BigNumber.from(wavesCount).toNumber(),
+          lastWaveTimestamp,
+        }))
+        .filter((waver: TopWaver) => !ethers.constants.HashZero.includes(waver.addr));
     } catch (error) {
       console.error(error);
     }

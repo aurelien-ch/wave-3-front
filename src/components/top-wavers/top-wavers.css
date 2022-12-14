@@ -1,22 +1,19 @@
-.top-wavers {
-  flex: 1 0 0;
-  background-color: rgb(2 25 4 / 42%);
-  padding: 20px 30px;
-  border-radius: 15px;
-  border: 1px solid #295d29;
+.top-wavers .top-waver-element-container:not(:first-of-type) {
+  margin-top: 10px;
 }
 
-.top-wavers .top-wavers-label {
-  font-size: 22px;
+.top-wavers .left-container {
+  flex: 1;
 }
 
-.top-wavers .wavers-container {
-  margin-top: 20px;
+.top-wavers .left-container>div {
+  margin-right: 25px;
 }
 
-.top-wavers .please-connect-label {
-  text-align: center;
-  font-size: 14px;
-  padding-top: 5px;
-  padding-bottom: 12px;
+.top-wavers .position-icon-container {
+  width: 40px;
+  height: 40px;
+  background-color: #0c320a;
+  border-radius: 50%;
+  margin-right: 20px !important;
 }

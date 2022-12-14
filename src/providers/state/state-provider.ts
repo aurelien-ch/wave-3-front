@@ -4,11 +4,12 @@ import { setMetamaskAccount } from "./actions/set-metamask-account";
 import { setShowModal } from "./actions/set-show-modal";
 import { setSenderWavesCount } from "./actions/set-sender-waves-count";
 import { setTotalWavesCount } from "./actions/set-total-waves-count";
-import { setWaves } from "./actions/set-waves";
 import { setOffset } from "./actions/set-offset";
 import { setLimit } from "./actions/set-limit";
+import { setWaves } from "./actions/set-waves";
+import { setTopWavers } from "./actions/set-top-wavers";
 
-import { WAVE_LIST_LIMIT, Wave } from "../types";
+import { WAVE_LIST_LIMIT, Wave, TopWaver } from "../types";
 
 export type State = {
   // Metamask Account
@@ -31,6 +32,9 @@ export type State = {
   setLimit: (limit: number) => void,
   waves: Wave[] | undefined,
   setWaves: (waves: Wave[] | undefined) => void,
+  // Top wavers
+  topWavers: TopWaver[] | undefined,
+  setTopWavers: (topWavers: TopWaver[] | undefined) => void,
 }
 
 export const initialState = ((set: any) => ({
@@ -54,6 +58,9 @@ export const initialState = ((set: any) => ({
   setLimit: (limit: number) => setLimit(set)(limit),
   waves: undefined,
   setWaves: (waves: Wave[] | undefined) => setWaves(set)(waves),
+  // Top wavers
+  topWavers: undefined,
+  setTopWavers: (topWavers: TopWaver[] | undefined) => setTopWavers(set)(topWavers),
 }));
 
 export const useStore = create<State>((set) => initialState(set));

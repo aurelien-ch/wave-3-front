@@ -4,3 +4,9 @@ export type Wave = {
   waverAddr: string,
   timestamp: number,
 }
+
+export type TopWaver = {
+  addr: string,
+  wavesCount: number,
+  lastWaveTimestamp: number,
+}

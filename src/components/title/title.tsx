@@ -2,7 +2,7 @@ import "./title.css";
 
 const Title = () => {
   return (
-    <div className="title">
+    <div className="header-title">
       <span>W</span>
       <span>a</span>
       <span>v</span>

@@ -1,4 +1,4 @@
-.title {
+.header-title {
   font-family: NeonBallroom;
   font-size: 120px;
   letter-spacing: 4px;
@@ -14,23 +14,23 @@
     0px 1px 150px #092c12;
 }
 
-.title span:nth-of-type(1) {
+.header-title span:nth-of-type(1) {
   animation: blink 10s ease-in-out 3s infinite;
 }
 
-.title span:nth-of-type(2) {
+.header-title span:nth-of-type(2) {
   animation: blink 10s ease-in-out 12s infinite;
 }
 
-.title span:nth-of-type(3) {
+.header-title span:nth-of-type(3) {
   animation: blink 10s ease-in-out 18s infinite;
 }
 
-.title span:nth-of-type(4) {
+.header-title span:nth-of-type(4) {
   animation: blink 10s ease-in-out 7s infinite;
 }
 
-.title span:nth-of-type(5) {
+.header-title span:nth-of-type(5) {
   animation: blink 10s ease-in-out 14s infinite;
 }
 

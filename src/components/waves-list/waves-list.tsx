@@ -7,6 +7,7 @@ import { useMetamaskProvider } from "../../providers/metamask-provider";
 
 import { Wave } from "../../providers/types";
 import "./waves-list.css";
+import "../../styles/list.css";
 
 const WavesList = () => {
   const { t } = useTranslation();
@@ -22,56 +23,59 @@ const WavesList = () => {
   const limit = useStore(state => state.limit);
 
   useEffect(() => {
+    // On page change, get waves with new offset
     metamaskProvider.getWaves().then((waves: Wave[] | undefined) => setWaves(waves));
   }, [metamaskProvider, offset, setWaves]);
 
   return (
-    <div className="waves-list">
-      <div className="flex justify-between font-bold">
-        <div className="all-waves-label">
-          {t("wavesList.allWaves")}
+    <div className="waves-list list flex flex-columns justify-between">
+      <div>
+        <div className="flex justify-between font-bold">
+          <div className="title">
+            {t("wavesList.allWaves")}
+          </div>
+          <div className={`total-waves-container flex align-center ${!metamaskAccount ? "opacity-0-3" : ""}`}>
+            {t("wavesList.total")}
+            {totalWavesCount ?? "-"}
+          </div>
         </div>
-        <div className={`total-waves-container flex align-center ${!metamaskAccount ? "opacity-0-3" : ""}`}>
-          {t("wavesList.total")}
-          {totalWavesCount ?? "-"}
-        </div>
-      </div>
-      <div className="waves-container">
-        {
-          metamaskAccount ? waves && waves.length ? (
-            waves.map((wave: Wave, index: number) => (
-              <div
-                key={index}
-                className="wave-container flex"
-              >
-                <div>
-                  <div className="wave-property-name">
-                    {t("wavesList.waver")}
+        <div className="elements-container">
+          {
+            metamaskAccount ? waves && waves.length ? (
+              waves.map((wave: Wave, index: number) => (
+                <div
+                  key={index}
+                  className="element-container flex justify-between"
+                >
+                  <div>
+                    <div className="element-property-name">
+                      {t("wavesList.waver")}
+                    </div>
+                    <div>
+                      {metamaskProvider.formatAddress(wave.waverAddr)}
+                    </div>
                   </div>
                   <div>
-                    {metamaskProvider.formatAddress(wave.waverAddr)}
+                    <div className="element-property-name">
+                      {t("wavesList.date")}
+                    </div>
+                    <div>
+                      {dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="wave-property-name">
-                    {t("wavesList.date")}
-                  </div>
-                  <div>
-                    {dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}
-                  </div>
-                </div>
+              ))
+            ) : (
+              <div className="info-label">
+                {t("wavesList.noWavesYet")} 🙁
               </div>
-            ))
-          ) : (
-            <div className="please-connect-label">
-              {t("wavesList.noWavesYet")} 🙁
-            </div>
-          ) : (
-            <div className="please-connect-label">
-              {t("wavesList.pleaseConnect")}
-            </div>
-          )
-        }
+            ) : (
+              <div className="info-label">
+                {t("wavesList.pleaseConnect")}
+              </div>
+            )
+          }
+        </div>
       </div>
       {
         metamaskAccount && waves && waves.length ? (

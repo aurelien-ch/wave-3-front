@@ -31,7 +31,11 @@ const resources = {
       },
       topWavers: {
         topWavers: "Top Wavers",
+        waver: "Waver",
+        waves: "Waves Nb.",
+        lastWave: "Last wave",
         pleaseConnect: "Please connect your wallet to see the top wavers !",
+        noTopWaversYet: "No top wavers yet",
       }
     }
   }
