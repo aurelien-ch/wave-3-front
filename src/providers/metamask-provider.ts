@@ -14,14 +14,16 @@ class MetamaskProvider {
   getEthereum = () => this.ethereum;
 
   constructor() {
-    const provider = new ethers.providers.Web3Provider(this.ethereum);
-    const signer = provider.getSigner();
+    if (this.getEthereum()) {
+      const provider = new ethers.providers.Web3Provider(this.ethereum);
+      const signer = provider.getSigner();
 
-    this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
-    this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
-    this.contract.on("NewWave", this.newWaveUpdate);
+      this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
+      this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
+      this.contract.on("NewWave", this.newWaveUpdate);
 
-    this.findConnectedAccount();
+      this.findConnectedAccount();
+    }
   }
 
   // Utils
@@ -76,7 +78,7 @@ class MetamaskProvider {
 
   private getSenderWavesCount = async (): Promise<number | undefined> => {
     try {
-      return BigNumber.from(await this.contract.getSenderWavesCount()).toNumber();
+      return BigNumber.from(await this.contract?.getSenderWavesCount()).toNumber();
     } catch (error) {
       console.error(error);
     }
@@ -84,7 +86,7 @@ class MetamaskProvider {
 
   private getTotalWavesCount = async (): Promise<number | undefined> => {
     try {
-      return BigNumber.from(await this.contract.getTotalWavesCount()).toNumber();
+      return BigNumber.from(await this.contract?.getTotalWavesCount()).toNumber();
     } catch (error) {
       console.error(error);
     }
@@ -95,7 +97,7 @@ class MetamaskProvider {
       const offset = useStore.getState().offset;
       const limit = useStore.getState().limit;
 
-      return (await this.contract.getWaves(offset, limit))
+      return (await this.contract?.getWaves(offset, limit))
         .map(({ waverAddr, timestamp }: any) => ({ waverAddr, timestamp }));
     } catch (error) {
       console.error(error);
@@ -104,7 +106,7 @@ class MetamaskProvider {
 
   private getTopWavers = async (): Promise<TopWaver[] | undefined> => {
     try {
-      return (await this.contract.getTopWavers())
+      return (await this.contract?.getTopWavers())
         .filter((e: any) => e.length)
         .map(({ addr, wavesCount, lastWaveTimestamp }: any) => ({
           addr,
@@ -119,7 +121,7 @@ class MetamaskProvider {
 
   wave = async (): Promise<void> => {
     try {
-      const waveTxn = await this.contract.wave();
+      const waveTxn = await this.contract?.wave();
 
       await waveTxn.wait();
       this.setStateData(useStore.getState().metamaskAccount);
