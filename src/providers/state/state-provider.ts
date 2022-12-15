@@ -9,7 +9,7 @@ import { setLimit } from "./actions/set-limit";
 import { setWaves } from "./actions/set-waves";
 import { setTopWavers } from "./actions/set-top-wavers";
 
-import { WAVE_LIST_LIMIT, Wave, TopWaver } from "../types";
+import { SetState, WAVE_LIST_LIMIT, Wave, TopWaver } from "../types";
 
 export type State = {
   // Metamask Account
@@ -37,7 +37,7 @@ export type State = {
   setTopWavers: (topWavers: TopWaver[] | undefined) => void,
 }
 
-export const initialState = ((set: any) => ({
+export const initialState = ((set: SetState) => ({
   // Metamask Account
   metamaskAccount: undefined,
   setMetamaskAccount: (account: string | undefined) => setMetamaskAccount(set)(account),

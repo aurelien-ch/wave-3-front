@@ -1,9 +1,9 @@
 import produce from "immer";
 
 import { State } from "../state-provider";
-import { Wave } from "../../types";
+import { SetState, Wave } from "../../types";
 
-export const setWaves = (set: any) => (waves: Wave[] | undefined) => {
+export const setWaves = (set: SetState) => (waves: Wave[] | undefined) => {
   set(produce((state: State) => {
     state.waves = waves;
   }));

@@ -98,7 +98,7 @@ class MetamaskProvider {
       const limit = useStore.getState().limit;
 
       return (await this.contract?.getWaves(offset, limit))
-        .map(({ waverAddr, timestamp }: any) => ({ waverAddr, timestamp }));
+        .map(({ waverAddr, timestamp }: Wave) => ({ waverAddr, timestamp }));
     } catch (error) {
       console.error(error);
     }
@@ -108,7 +108,7 @@ class MetamaskProvider {
     try {
       return (await this.contract?.getTopWavers())
         .filter((e: any) => e.length)
-        .map(({ addr, wavesCount, lastWaveTimestamp }: any) => ({
+        .map(({ addr, wavesCount, lastWaveTimestamp }: TopWaver) => ({
           addr,
           wavesCount: BigNumber.from(wavesCount).toNumber(),
           lastWaveTimestamp,
