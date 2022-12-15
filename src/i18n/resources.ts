@@ -24,7 +24,8 @@ const resources = {
         steps: {
           1: "1 - Connect your Metamask wallet",
           2: "2 - Switch to the Goerli test network",
-          3: "3 - Claim some ETH faucets here",
+          3: "3 - Claim some fake ETH ",
+          here: "here",
           4: "4 - Let's wave !",
         },
       },

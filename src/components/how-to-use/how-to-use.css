@@ -14,3 +14,13 @@
 .how-to-use .steps>div:not(:last-of-type) {
   margin-bottom: 3px;
 }
+
+.how-to-use .faucet-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.how-to-use .faucet-link:hover {
+  transform: scale(1.1);
+}

@@ -6,6 +6,10 @@ body {
   background-color: rgb(40, 40, 40);
 }
 
+a {
+  color: white;
+}
+
 /*** Font Classes ***/
 
 @font-face {

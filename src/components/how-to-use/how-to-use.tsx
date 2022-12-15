@@ -13,7 +13,17 @@ const HowToUse = () => {
       <div className="steps">
         <div>{t("howToUse.steps.1")}</div>
         <div>{t("howToUse.steps.2")}</div>
-        <div>{t("howToUse.steps.3")}</div>
+        <div>
+          {t("howToUse.steps.3")}
+          <a
+            className="faucet-link font-bold"
+            href={window.env.FAUCET_LINK}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("howToUse.steps.here")}
+          </a>
+        </div>
         <div>{t("howToUse.steps.4")}</div>
       </div>
     </div>

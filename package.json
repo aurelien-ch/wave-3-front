@@ -50,9 +50,10 @@
   },
   "react-dotenv": {
     "whitelist": [
+      "CONTRACT_ADDRESS",
       "GITHUB_LINK",
       "LINKEDIN_LINK",
-      "CONTRACT_ADDRESS"
+      "FAUCET_LINK"
     ]
   },
   "devDependencies": {
