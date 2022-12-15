@@ -131,7 +131,7 @@ class MetamaskProvider {
       if (error.code !== "ACTION_REJECTED") {
         useStore.getState().setShowModal(true,
           i18n.t("modal.error"),
-          [errorReason.charAt(0).toUpperCase() + errorReason.slice(1)]
+          [errorReason.charAt(0).toUpperCase() + errorReason.slice(1)],
         );
       }
 
