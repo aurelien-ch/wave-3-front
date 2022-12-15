@@ -5,6 +5,7 @@ import { useMetamaskProvider } from "./providers/metamask-provider";
 import BasicModal from "./components/modals/basic-modal/basic-modal";
 import Header from "./components/header/header";
 import WaveBox from "./components/wave-box/wave-box";
+import HowToUse from "./components/how-to-use/how-to-use";
 import WavesList from "./components/waves-list/waves-list";
 import TopWavers from "./components/top-wavers/top-wavers";
 
@@ -32,8 +33,11 @@ const App = () => {
         content={modalContent}
       />
       <Header />
-      <WaveBox />
-      <div className="lists-container flex">
+      <div className="row-container flex">
+        <WaveBox />
+        <HowToUse />
+      </div>
+      <div className="row-container flex">
         <WavesList />
         <TopWavers />
       </div>

@@ -1,10 +1,9 @@
 .wave-box {
-  width: 800px;
+  flex: 2.5;
   background-color: rgb(2 25 4 / 42%);
   border-radius: 15px;
   border: 1px solid #295d29;
   padding: 20px 30px;
-  margin: 0 5%;
 }
 
 .wave-box .first-wave-headline {

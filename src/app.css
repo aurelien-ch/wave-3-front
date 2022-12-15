@@ -6,9 +6,12 @@
   animation: GradientAnimation 6s ease infinite;
 }
 
-.lists-container {
+.row-container {
   gap: 50px;
-  margin: 50px 5%;
+  margin: 0 5% 50px 5%;
+}
+
+.row-container:last-of-type {
   padding-bottom: 100px;
 }
 

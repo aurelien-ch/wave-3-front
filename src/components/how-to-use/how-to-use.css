@@ -1,0 +1,16 @@
+.how-to-use {
+  flex: 1;
+  background-color: rgb(2 25 4 / 42%);
+  border-radius: 15px;
+  border: 1px solid #295d29;
+  padding: 20px 30px;
+}
+
+.how-to-use .steps>div {
+  font-size: 15px;
+  opacity: .8;
+}
+
+.how-to-use .steps>div:not(:last-of-type) {
+  margin-bottom: 3px;
+}

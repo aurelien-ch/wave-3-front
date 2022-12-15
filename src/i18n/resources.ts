@@ -19,6 +19,15 @@ const resources = {
         yourTotalWaves: "Your total waves : ",
         waveAtMe: "Wave at me",
       },
+      howToUse: {
+        howToUse: "How to use ?",
+        steps: {
+          1: "1 - Connect your Metamask wallet",
+          2: "2 - Switch to the Goerli test network",
+          3: "3 - Claim some ETH faucets here",
+          4: "4 - Let's wave !",
+        },
+      },
       wavesList: {
         allWaves: "All waves",
         total: "Total : ",
