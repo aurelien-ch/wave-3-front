@@ -21,7 +21,7 @@ const HowToUse = () => {
             target="_blank"
             rel="noreferrer"
           >
-            {t("howToUse.steps.here")}
+            {t("generic.here")}
           </a>
         </div>
         <div>{t("howToUse.steps.4")}</div>

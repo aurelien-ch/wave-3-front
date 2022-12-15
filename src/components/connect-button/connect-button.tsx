@@ -10,11 +10,20 @@ const ConnectButton = () => {
   const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
+  const setShowModal = useStore(state => state.setShowModal);
+
+  const connectAcccount = () => {
+    if (!metamaskProvider.getEthereum()) {
+      setShowModal(true, t("modal.error"), [t("errors.installMetamask1"), t("errors.installMetamask2")]);
+    } else {
+      metamaskProvider.connectAccount();
+    }
+  };
 
   return (
     <div
       className={`connect-button ${metamaskAccount ? "connected" : ""}`}
-      onClick={metamaskProvider.connectAccount}
+      onClick={connectAcccount}
     >
       {metamaskAccount ? metamaskProvider.formatAddress(metamaskAccount) : t("header.connect")}
       {

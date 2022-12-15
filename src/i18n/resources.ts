@@ -1,14 +1,9 @@
 const resources = {
   en: {
     translation: {
-      modal: {
-        error: "Whoops !",
-        close: "Close",
-      },
-      errors: {
-        notConnected1: "You're not currently connected with your Metamask wallet.",
-        notConnected2: "Please connect your wallet to be able to wave at me !",
-      },
+
+      /* Components */
+
       header: {
         connect: "Connect",
       },
@@ -25,7 +20,6 @@ const resources = {
           1: "1 - Connect your Metamask wallet",
           2: "2 - Switch to the Goerli test network",
           3: "3 - Claim some fake ETH ",
-          here: "here",
           4: "4 - Let's wave !",
         },
       },
@@ -46,7 +40,24 @@ const resources = {
         lastWave: "Last wave",
         pleaseConnect: "Please connect your wallet to see the top wavers !",
         noTopWaversYet: "No top wavers yet",
-      }
+      },
+
+      /* Others */
+
+      modal: {
+        error: "Whoops !",
+        close: "Close",
+      },
+      errors: {
+        notConnected1: "You're not currently connected with your Metamask wallet.",
+        notConnected2: "Please connect your wallet to be able to wave at me !",
+        installMetamask1: "It looks like you haven't installed the Metamask extension.",
+        installMetamask2: "Please visit metamask.io for more info !",
+      },
+      generic: {
+        here: "here",
+      },
+
     }
   }
 };
