@@ -48,12 +48,12 @@ class MetamaskProvider {
 
   // Ethereum interactions
 
-  private findConnectedAccount = async (): Promise<void> => {
+  findConnectedAccount = async (): Promise<void> => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
       if (accounts.length) {
-        this.setStateData(accounts[0]);
+        useStore.getState().setMetamaskAccount(accounts[0]);
       }
     } catch (error) {
       console.error(error);
