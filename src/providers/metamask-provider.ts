@@ -20,6 +20,8 @@ class MetamaskProvider {
     this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
     this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
     this.contract.on("NewWave", this.newWaveUpdate);
+
+    this.findConnectedAccount();
   }
 
   // Utils
@@ -46,7 +48,7 @@ class MetamaskProvider {
 
   // Ethereum interactions
 
-  findConnectedAccount = async (): Promise<void> => {
+  private findConnectedAccount = async (): Promise<void> => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
@@ -72,7 +74,7 @@ class MetamaskProvider {
 
   // Contract interactions
 
-  getSenderWavesCount = async (): Promise<number | undefined> => {
+  private getSenderWavesCount = async (): Promise<number | undefined> => {
     try {
       return BigNumber.from(await this.contract.getSenderWavesCount()).toNumber();
     } catch (error) {
@@ -80,7 +82,7 @@ class MetamaskProvider {
     }
   }
 
-  getTotalWavesCount = async (): Promise<number | undefined> => {
+  private getTotalWavesCount = async (): Promise<number | undefined> => {
     try {
       return BigNumber.from(await this.contract.getTotalWavesCount()).toNumber();
     } catch (error) {
@@ -100,7 +102,7 @@ class MetamaskProvider {
     }
   }
 
-  getTopWavers = async (): Promise<TopWaver[] | undefined> => {
+  private getTopWavers = async (): Promise<TopWaver[] | undefined> => {
     try {
       return (await this.contract.getTopWavers())
         .filter((e: any) => e.length)
