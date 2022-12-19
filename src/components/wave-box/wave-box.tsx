@@ -24,7 +24,7 @@ const WaveBox = () => {
           {t("waveBox.waveHeadline3")}
         </div>
       </div>
-      <div className="flex flex-columns justify-center align-end margin-left-10">
+      <div className="flex flex-columns justify-center align-end margin-left-20">
         <div className={`user-total-waves-label ${!metamaskAccount ? "opacity-0-2" : ""}`}>
           {t("waveBox.yourTotalWaves")}
           <span className="font-bold">
