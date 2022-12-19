@@ -23,9 +23,11 @@ const WavesList = () => {
   const limit = useStore(state => state.limit);
 
   useEffect(() => {
-    // On page change, get waves with new offset
-    metamaskProvider.getWaves().then((waves: Wave[] | undefined) => setWaves(waves));
-  }, [metamaskProvider, offset, setWaves]);
+    if (metamaskAccount) {
+      // On page change, get waves with new offset
+      metamaskProvider.getWaves().then((waves: Wave[] | undefined) => setWaves(waves));
+    }
+  }, [metamaskAccount, metamaskProvider, offset, setWaves]);
 
   return (
     <div className="waves-list list flex flex-columns justify-between">

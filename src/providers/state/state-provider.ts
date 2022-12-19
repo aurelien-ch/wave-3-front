@@ -1,7 +1,7 @@
 import create from "zustand";
 
 import { setMetamaskAccount } from "./actions/set-metamask-account";
-import { setShowModal } from "./actions/set-show-modal";
+import { setModal } from "./actions/set-modal";
 import { setSenderWavesCount } from "./actions/set-sender-waves-count";
 import { setTotalWavesCount } from "./actions/set-total-waves-count";
 import { setOffset } from "./actions/set-offset";
@@ -9,17 +9,15 @@ import { setLimit } from "./actions/set-limit";
 import { setWaves } from "./actions/set-waves";
 import { setTopWavers } from "./actions/set-top-wavers";
 
-import { SetState, WAVE_LIST_LIMIT, Wave, TopWaver } from "../types";
+import { SetState, WAVE_LIST_LIMIT, ModalTemplate, Wave, TopWaver } from "../types";
 
 export type State = {
   // Metamask Account
   metamaskAccount: string | undefined,
   setMetamaskAccount: (account: string | undefined) => void,
   // Modal
-  showModal: boolean,
-  setShowModal: (showModal: boolean, modalTitle: string, modalContent: string[]) => void,
-  modalTitle: string,
-  modalContent: string[],
+  modal: ModalTemplate,
+  setModal: (modal: ModalTemplate) => void,
   // Waves Counts
   senderWavesCount: number | undefined,
   setSenderWavesCount: (wavesCount: number | undefined) => void,
@@ -42,10 +40,8 @@ export const initialState = ((set: SetState) => ({
   metamaskAccount: undefined,
   setMetamaskAccount: (account: string | undefined) => setMetamaskAccount(set)(account),
   // Modal
-  showModal: false,
-  setShowModal: (showModal: boolean, modalTitle?: string, modalContent?: string[]) => setShowModal(set)(showModal, modalTitle, modalContent),
-  modalTitle: "",
-  modalContent: [],
+  modal: {} as ModalTemplate,
+  setModal: (modal: ModalTemplate) => setModal(set)(modal),
   // Waves Counts
   senderWavesCount: undefined,
   setSenderWavesCount: (wavesCount: number | undefined) => setSenderWavesCount(set)(wavesCount),

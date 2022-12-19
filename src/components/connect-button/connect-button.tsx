@@ -10,11 +10,15 @@ const ConnectButton = () => {
   const metamaskProvider = useMetamaskProvider();
 
   const metamaskAccount = useStore(state => state.metamaskAccount);
-  const setShowModal = useStore(state => state.setShowModal);
+  const setModal = useStore(state => state.setModal);
 
   const connectAcccount = () => {
     if (!metamaskProvider.getEthereum()) {
-      setShowModal(true, t("modal.error"), [t("errors.installMetamask1"), t("errors.installMetamask2")]);
+      setModal({
+        show: true,
+        title: t("modal.error"),
+        content: [t("errors.installMetamask1"), t("errors.installMetamask2")],
+      });
     } else {
       metamaskProvider.connectAccount();
     }

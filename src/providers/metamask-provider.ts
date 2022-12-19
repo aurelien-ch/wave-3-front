@@ -9,28 +9,31 @@ import { Wave, TopWaver } from "./types";
 class MetamaskProvider {
   private ethereum = window.ethereum;
   private contractAddress = window.env.CONTRACT_ADDRESS;
+  private chainId = window.env.CHAIN_ID;
   private contract;
 
   getEthereum = () => this.ethereum;
 
   constructor() {
     if (this.getEthereum()) {
-      const provider = new ethers.providers.Web3Provider(this.ethereum);
+      const provider = new ethers.providers.Web3Provider(this.ethereum, "any");
       const signer = provider.getSigner();
 
       this.contract = new ethers.Contract(this.contractAddress, contractABI.abi, signer);
-      this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
       this.contract.on("NewWave", this.newWaveUpdate);
+
+      this.ethereum.addListener("accountsChanged", (accounts: string[]) => this.setStateData(accounts[0]));
+      this.ethereum.addListener("networkChanged", this.onNetworkChanged);
 
       this.findConnectedAccount();
     }
-  }
+  };
 
   // Utils
 
   formatAddress = (address: string): string => {
     return address.substring(0, 6) + "..." + address.substring(address.length - 4);
-  }
+  };
 
   private setStateData = async (account: string | undefined) => {
     useStore.getState().setMetamaskAccount(account ?? undefined);
@@ -38,7 +41,8 @@ class MetamaskProvider {
     useStore.getState().setTotalWavesCount(account ? await this.getTotalWavesCount() : undefined);
     useStore.getState().setWaves(account ? await this.getWaves() : undefined);
     useStore.getState().setTopWavers(account ? await this.getTopWavers() : undefined);
-  }
+    useStore.getState().setModal({ show: false });
+  };
 
   private newWaveUpdate = () => {
     const metamaskAccount = useStore.getState().metamaskAccount;
@@ -46,11 +50,26 @@ class MetamaskProvider {
     if (metamaskAccount) {
       this.setStateData(metamaskAccount);
     }
-  }
+  };
 
-  // Ethereum interactions
+  private onNetworkChanged = (network: string) => {
+    if (useStore.getState().metamaskAccount && network !== this.chainId) {
+      useStore.getState().setModal({
+        show: true,
+        title: i18n.t("modal.error"),
+        content: [i18n.t("errors.wrongNetwork")],
+        buttonTitle: i18n.t("modal.switchNetwork")!,
+        buttonFunction: () => this.switchChain(),
+      });
+    } else {
+      useStore.getState().setModal({ show: false });
+      this.setStateData(useStore.getState().metamaskAccount);
+    }
+  };
 
-  findConnectedAccount = async (): Promise<void> => {
+  // Ethereum wallet interactions
+
+  private findConnectedAccount = async (): Promise<void> => {
     try {
       const accounts = await this.ethereum.request({ method: "eth_accounts" });
 
@@ -60,7 +79,7 @@ class MetamaskProvider {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   connectAccount = async (): Promise<void> => {
     try {
@@ -68,11 +87,24 @@ class MetamaskProvider {
 
       if (accounts.length) {
         useStore.getState().setMetamaskAccount(accounts[0]);
+
+        // If wrong network selected, switch to desired network
+
+        if (this.ethereum.networkVersion !== this.chainId) {
+          this.switchChain();
+        }
       }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  private switchChain = async () => {
+    await this.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: `0x${this.chainId.toString(16)}` }],
+    });
+  };
 
   // Contract interactions
 
@@ -82,7 +114,7 @@ class MetamaskProvider {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   private getTotalWavesCount = async (): Promise<number | undefined> => {
     try {
@@ -90,7 +122,7 @@ class MetamaskProvider {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   getWaves = async (): Promise<Wave[] | undefined> => {
     try {
@@ -102,7 +134,7 @@ class MetamaskProvider {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   private getTopWavers = async (): Promise<TopWaver[] | undefined> => {
     try {
@@ -117,28 +149,47 @@ class MetamaskProvider {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   wave = async (): Promise<void> => {
-    try {
-      const waveTxn = await this.contract?.wave();
+    if (!useStore.getState().metamaskAccount) {
+      useStore.getState().setModal({
+        show: true,
+        title: i18n.t("modal.error"),
+        content: [i18n.t("errors.notConnected1"), i18n.t("errors.notConnected2")],
+        buttonTitle: i18n.t("header.connect")!,
+        buttonFunction: () => this.connectAccount(),
+      });
+    } else if (this.ethereum.networkVersion !== this.chainId) {
+      useStore.getState().setModal({
+        show: true,
+        title: i18n.t("modal.error"),
+        content: [i18n.t("errors.wrongNetwork")],
+        buttonTitle: i18n.t("modal.switchNetwork")!,
+        buttonFunction: () => this.switchChain(),
+      });
+    } else {
+      try {
+        const waveTxn = await this.contract?.wave();
 
-      await waveTxn.wait();
-      this.setStateData(useStore.getState().metamaskAccount);
-    } catch (error: any) {
-      const errorReason = error.reason.replace("execution reverted: ", "");
+        await waveTxn.wait();
+        this.setStateData(useStore.getState().metamaskAccount);
+      } catch (error: any) {
+        const errorReason = error.reason.replace("execution reverted: ", "");
 
-      if (error.code !== "ACTION_REJECTED") {
-        useStore.getState().setShowModal(true,
-          i18n.t("modal.error"),
-          [errorReason.charAt(0).toUpperCase() + errorReason.slice(1)],
-        );
+        if (error.code !== "ACTION_REJECTED") {
+          useStore.getState().setModal({
+            show: true,
+            title: i18n.t("modal.error"),
+            content: [errorReason.charAt(0).toUpperCase() + errorReason.slice(1)],
+          });
+        }
+
+        console.error(error);
       }
-
-      console.error(error);
     }
-  }
-}
+  };
+};
 
 const provider = new MetamaskProvider();
 

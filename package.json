@@ -51,6 +51,7 @@
   "react-dotenv": {
     "whitelist": [
       "CONTRACT_ADDRESS",
+      "CHAIN_ID",
       "GITHUB_LINK",
       "LINKEDIN_LINK",
       "FAUCET_LINK"

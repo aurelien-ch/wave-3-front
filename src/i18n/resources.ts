@@ -47,12 +47,14 @@ const resources = {
       modal: {
         error: "Whoops !",
         close: "Close",
+        switchNetwork: "Switch Network",
       },
       errors: {
         notConnected1: "You're not currently connected with your Metamask wallet.",
         notConnected2: "Please connect your wallet to be able to wave at me !",
         installMetamask1: "It looks like you haven't installed the Metamask extension.",
         installMetamask2: "Please visit metamask.io for more info !",
+        wrongNetwork: "Please switch to the Goerli test network to be able to wave at me !",
       },
       generic: {
         here: "here",

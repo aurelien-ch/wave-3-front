@@ -9,27 +9,25 @@ import TopWavers from "./components/top-wavers/top-wavers";
 import "./app.css";
 
 const App = () => {
-  const showModal = useStore(state => state.showModal);
-  const setShowModal = useStore(state => state.setShowModal);
-  const modalTitle = useStore(state => state.modalTitle);
-  const modalContent = useStore(state => state.modalContent);
+  const modal = useStore(state => state.modal);
+  const setModal = useStore(state => state.setModal);
 
   return (
-    <div className="app-container">
+    <div>
       <BasicModal
-        open={showModal}
-        setOpen={setShowModal}
-        title={modalTitle}
-        content={modalContent}
+        modal={modal}
+        setModal={setModal}
       />
-      <Header />
-      <div className="row-container flex">
-        <WaveBox />
-        <HowToUse />
-      </div>
-      <div className="row-container flex">
-        <WavesList />
-        <TopWavers />
+      <div className="app-container">
+        <Header />
+        <div className="row-container flex">
+          <WaveBox />
+          <HowToUse />
+        </div>
+        <div className="row-container flex">
+          <WavesList />
+          <TopWavers />
+        </div>
       </div>
     </div>
   );

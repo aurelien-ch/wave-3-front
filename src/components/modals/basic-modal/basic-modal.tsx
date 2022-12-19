@@ -1,16 +1,15 @@
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 
+import { ModalTemplate } from "../../../providers/types";
 import "./basic-modal.css";
 
 interface ModalProps {
-  open: boolean,
-  setOpen: Function,
-  title: string,
-  content: string[],
+  modal: ModalTemplate,
+  setModal: Function,
 }
 
-const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
+const BasicModal = ({ modal, setModal }: ModalProps) => {
   const { t } = useTranslation();
 
   const style = {
@@ -34,20 +33,19 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
   return (
     <Modal
       ariaHideApp={false}
-      isOpen={open}
-      onRequestClose={() => setOpen(false)}
+      isOpen={modal.show}
+      onRequestClose={() => modal.unclosable ? null : setModal({ ...modal, show: false })}
       style={style}
-      contentLabel="Example Modal"
     >
       <div className="basic-modal-title font-bold">
-        {title}
+        {modal.title}
       </div>
       <div className="basic-modal-content">
         {
-          content.map((line: string, index: number) => (
+          modal.content?.map((line: string, index: number) => (
             <div
               key={index}
-              className={index < content.length - 1 ? "margin-bottom-10" : ""}
+              className={modal.content && index < modal.content.length - 1 ? "margin-bottom-10" : ""}
             >
               {line}
             </div>
@@ -56,11 +54,11 @@ const BasicModal = ({ open, setOpen, title, content }: ModalProps) => {
       </div>
       <div
         className="basic-modal-close-button"
-        onClick={() => setOpen(false)}
+        onClick={modal.buttonFunction as React.MouseEventHandler<HTMLDivElement> ?? (() => setModal({ ...modal, show: false }))}
       >
-        {t("modal.close")}
+        {modal.buttonTitle ?? t("modal.close")}
       </div>
-    </Modal>
+    </Modal >
   );
 };
 
