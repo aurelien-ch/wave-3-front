@@ -6,7 +6,12 @@
   padding: 30px 0;
 }
 
-.header:before {
+.header-mobile {
+  padding: 25px;
+}
+
+.header:before,
+.header-mobile:before {
   content: " ";
   display: block;
   position: absolute;

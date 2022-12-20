@@ -10,7 +10,7 @@
   transition: .3s;
 }
 
-.wave-button.mobile-wave-button {
+.wave-button.mobile {
   width: auto;
   text-align: center;
 }

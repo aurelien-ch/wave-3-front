@@ -21,7 +21,7 @@ const WaveButton = () => {
 
   return (
     <div
-      className={`wave-button ${isMobile ? "mobile-wave-button" : ""}`}
+      className={`wave-button ${isMobile ? "mobile" : ""}`}
       onClick={wave}
     >
       <div className={loading ? "opacity-0" : ""}>

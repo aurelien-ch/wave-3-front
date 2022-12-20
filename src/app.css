@@ -11,6 +11,11 @@
   margin: 0 5% 50px 5%;
 }
 
+.row-container.tablet {
+  gap: 30px;
+  margin: 0 5% 30px 5%;
+}
+
 .row-container:last-of-type {
   padding-bottom: 100px;
 }

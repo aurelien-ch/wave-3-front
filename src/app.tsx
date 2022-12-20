@@ -12,7 +12,8 @@ import TopWavers from "./components/top-wavers/top-wavers";
 import "./app.css";
 
 const App = () => {
-  const isMobileOrTablet = useMediaQuery({ query: "(max-width: 1340px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1000px)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 1340px)" });
 
   const modal = useStore(state => state.modal);
   const setModal = useStore(state => state.setModal);
@@ -25,11 +26,11 @@ const App = () => {
       />
       <div className="app-container">
         <Header />
-        <div className={`row-container flex ${isMobileOrTablet ? "flex-columns" : ""}`}>
+        <div className={`row-container flex ${isTablet ? "tablet" : ""} ${isSmallScreen ? "flex-columns" : ""}`}>
           <WaveBox />
           <HowToUse />
         </div>
-        <div className={`row-container flex ${isMobileOrTablet ? "flex-columns" : ""}`}>
+        <div className={`row-container flex ${isTablet ? "tablet" : ""} ${isSmallScreen ? "flex-columns" : ""}`}>
           <WavesList />
           <TopWavers />
         </div>
