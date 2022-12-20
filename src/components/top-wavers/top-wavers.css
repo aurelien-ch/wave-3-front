@@ -2,10 +2,6 @@
   margin-top: 10px;
 }
 
-.top-wavers .left-container {
-  flex: 1;
-}
-
 .top-wavers .left-container>div {
   margin-right: 25px;
 }

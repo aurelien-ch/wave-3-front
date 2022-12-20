@@ -1,5 +1,4 @@
 .list {
-  flex: 1 0 0;
   background-color: rgb(2 25 4 / 42%);
   padding: 20px 30px;
   border-radius: 15px;
@@ -15,7 +14,6 @@
 }
 
 .list .element-container {
-  flex: 1 1 0;
   border: 1px solid #295d29;
   border-radius: 10px;
   padding: 12px 25px;
@@ -36,10 +34,6 @@
 
 .list .pagination-buttons-container {
   margin-top: 20px;
-}
-
-.list .pagination-buttons-container>div {
-  flex: 1 0 0;
 }
 
 .list .pagination-button {

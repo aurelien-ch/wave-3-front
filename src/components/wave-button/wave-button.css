@@ -10,6 +10,11 @@
   transition: .3s;
 }
 
+.wave-button.mobile-wave-button {
+  width: auto;
+  text-align: center;
+}
+
 .wave-button:hover {
   transform: scale(1.05);
 }

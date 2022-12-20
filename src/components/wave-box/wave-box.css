@@ -11,5 +11,6 @@
 }
 
 .wave-box .user-total-waves-label {
+  text-align: right;
   margin-right: 5px;
 }

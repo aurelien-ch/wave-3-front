@@ -30,7 +30,7 @@ const WavesList = () => {
   }, [metamaskAccount, metamaskProvider, offset, setWaves]);
 
   return (
-    <div className="waves-list list flex flex-columns justify-between">
+    <div className="waves-list list flex flex-1 flex-columns justify-between">
       <div>
         <div className="flex justify-between font-bold">
           <div className="title">
@@ -62,7 +62,7 @@ const WavesList = () => {
                       {t("wavesList.date")}
                     </div>
                     <div>
-                      {dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy - HH:MM')}
+                      {dateFormat(new Date(wave.timestamp * 1000), "mmm dS, yyyy - HH:MM")}
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ const WavesList = () => {
       {
         metamaskAccount && waves && waves.length ? (
           <div className="pagination-buttons-container flex align-center">
-            <div>
+            <div className="flex-1">
               <div
                 className={`pagination-button  ${offset === 0 ? "disabled" : ""}`}
                 onClick={() => setOffset(offset - limit)}
@@ -90,12 +90,12 @@ const WavesList = () => {
                 {t("wavesList.prev")}
               </div>
             </div>
-            <div>
+            <div className="flex-1">
               <div className="pagination-counter flex justify-center">
                 {(offset / limit) + 1} / {Math.ceil(totalWavesCount! / limit)}
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="flex flex-1 justify-end">
               <div
                 className={`pagination-button ${offset + limit > totalWavesCount! - 1 ? "disabled" : ""}`}
                 onClick={() => setOffset(offset + limit)}

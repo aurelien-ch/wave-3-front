@@ -16,7 +16,7 @@ const TopWavers = () => {
   const topWavers = useStore(state => state.topWavers);
 
   return (
-    <div className="top-wavers list">
+    <div className="top-wavers list flex-1">
       <div className="title font-bold">
         {t("topWavers.topWavers")}
       </div>
@@ -31,8 +31,8 @@ const TopWavers = () => {
                 <div className="position-icon-container flex justify-center align-center">
                   {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : ""}
                 </div>
-                <div className="element-container flex">
-                  <div className="left-container flex">
+                <div className="element-container flex flex-1">
+                  <div className="left-container flex flex-1">
 
                     <div>
                       <div className="element-property-name">
@@ -56,7 +56,7 @@ const TopWavers = () => {
                       {t("topWavers.lastWave")}
                     </div>
                     <div>
-                      {dateFormat(new Date(topWaver.lastWaveTimestamp * 1000), 'mmm dS, yyyy - HH:MM')}
+                      {dateFormat(new Date(topWaver.lastWaveTimestamp * 1000), "mmm dS, yyyy - HH:MM")}
                     </div>
                   </div>
                 </div>
