@@ -5,6 +5,10 @@
   border: 1px solid #295d29;
 }
 
+.list.mobile {
+  padding: 20px;
+}
+
 .list .title {
   font-size: 22px;
 }
@@ -16,7 +20,7 @@
 .list .element-container {
   border: 1px solid #295d29;
   border-radius: 10px;
-  padding: 12px 25px;
+  padding: 12px 25px 16px;
 }
 
 .list .element-property-name {

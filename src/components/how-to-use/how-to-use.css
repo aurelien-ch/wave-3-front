@@ -5,6 +5,10 @@
   padding: 20px 30px;
 }
 
+.how-to-use.mobile {
+  padding: 20px;
+}
+
 .how-to-use .steps>div {
   font-size: 15px;
   opacity: .8;

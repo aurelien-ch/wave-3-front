@@ -1,3 +1,7 @@
+.top-wavers .top-waver-element-container {
+  position: relative;
+}
+
 .top-wavers .top-waver-element-container:not(:first-of-type) {
   margin-top: 10px;
 }
@@ -6,10 +10,15 @@
   margin-right: 25px;
 }
 
-.top-wavers .position-icon-container {
+.top-wavers .rank-icon-container {
   width: 40px;
   height: 40px;
   background-color: #0c320a;
   border-radius: 50%;
-  margin-right: 20px;
+}
+
+.top-wavers .rank-icon-container.mobile {
+  position: absolute;
+  top: 18px;
+  right: 22px;
 }

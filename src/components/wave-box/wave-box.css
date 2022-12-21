@@ -6,6 +6,10 @@
   padding: 20px 30px;
 }
 
+.wave-box.mobile {
+  padding: 20px;
+}
+
 .wave-box .first-wave-headline {
   font-size: 18px;
 }

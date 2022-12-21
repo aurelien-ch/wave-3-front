@@ -1,12 +1,14 @@
+import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 
 import "./how-to-use.css";
 
 const HowToUse = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   const { t } = useTranslation();
 
   return (
-    <div className="how-to-use">
+    <div className={`how-to-use ${isMobile ? "mobile" : ""}`}>
       <div className="font-bold margin-bottom-10">
         {t("howToUse.howToUse")}
       </div>

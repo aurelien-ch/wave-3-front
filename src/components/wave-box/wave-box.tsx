@@ -14,7 +14,7 @@ const WaveBox = () => {
   const senderWavesCount = useStore(state => state.senderWavesCount);
 
   return (
-    <div className={`wave-box flex ${isMobile ? "flex-columns" : ""}`}>
+    <div className={`wave-box flex ${isMobile ? "flex-columns mobile" : ""}`}>
       <div className="flex flex-1 flex-columns justify-center">
         <div className="first-wave-headline font-bold margin-bottom-10">
           {t("waveBox.waveHeadline1")}

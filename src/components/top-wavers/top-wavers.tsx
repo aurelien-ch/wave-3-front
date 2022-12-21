@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import dateFormat from "dateformat";
 
@@ -9,6 +10,7 @@ import "./top-wavers.css";
 import "../../styles/list.css";
 
 const TopWavers = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   const { t } = useTranslation();
   const metamaskProvider = useMetamaskProvider();
 
@@ -16,7 +18,7 @@ const TopWavers = () => {
   const topWavers = useStore(state => state.topWavers);
 
   return (
-    <div className="top-wavers list flex-1">
+    <div className={`top-wavers list flex-1 ${isMobile ? "mobile" : ""}`}>
       <div className="title font-bold">
         {t("topWavers.topWavers")}
       </div>
@@ -28,13 +30,12 @@ const TopWavers = () => {
                 key={index}
                 className="top-waver-element-container flex align-center"
               >
-                <div className="position-icon-container flex justify-center align-center">
+                <div className={`rank-icon-container flex justify-center align-center ${isMobile ? "mobile" : "margin-right-20"}`}>
                   {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : ""}
                 </div>
-                <div className="element-container flex flex-1">
-                  <div className="left-container flex flex-1">
-
-                    <div>
+                <div className={`element-container flex flex-1 ${isMobile ? "flex-columns" : ""}`}>
+                  <div className={`left-container flex flex-1 ${isMobile ? "flex-columns" : ""}`}>
+                    <div className={isMobile ? "margin-bottom-10" : ""}>
                       <div className="element-property-name">
                         {t("topWavers.waver")}
                       </div>
@@ -42,7 +43,7 @@ const TopWavers = () => {
                         {metamaskProvider.formatAddress(topWaver.addr)}
                       </div>
                     </div>
-                    <div>
+                    <div className={isMobile ? "margin-bottom-10" : ""}>
                       <div className="element-property-name">
                         {t("topWavers.waves")}
                       </div>

@@ -70,6 +70,9 @@ a {
 }
 
 /*** Other Classes ***/
+.margin-top-30 {
+  margin-top: 30px;
+}
 
 .margin-bottom-5 {
   margin-bottom: 5px;
@@ -79,12 +82,12 @@ a {
   margin-bottom: 10px;
 }
 
-.margin-left-10 {
-  margin-left: 10px;
+.margin-right-20 {
+  margin-right: 20px;
 }
 
-.margin-top-30 {
-  margin-top: 30px;
+.margin-left-10 {
+  margin-left: 10px;
 }
 
 .margin-left-30 {

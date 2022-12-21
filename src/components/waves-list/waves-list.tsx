@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import dateFormat from "dateformat";
@@ -10,6 +11,7 @@ import "./waves-list.css";
 import "../../styles/list.css";
 
 const WavesList = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   const { t } = useTranslation();
   const metamaskProvider = useMetamaskProvider();
 
@@ -30,7 +32,7 @@ const WavesList = () => {
   }, [metamaskAccount, metamaskProvider, offset, setWaves]);
 
   return (
-    <div className="waves-list list flex flex-1 flex-columns justify-between">
+    <div className={`waves-list list flex flex-1 flex-columns justify-between ${isMobile ? " mobile" : ""}`}>
       <div>
         <div className="flex justify-between font-bold">
           <div className="title">
@@ -47,9 +49,9 @@ const WavesList = () => {
               waves.map((wave: Wave, index: number) => (
                 <div
                   key={index}
-                  className="element-container flex justify-between"
+                  className={`element-container flex justify-between ${isMobile ? "flex-columns" : ""}`}
                 >
-                  <div>
+                  <div className={isMobile ? "margin-bottom-10" : ""}>
                     <div className="element-property-name">
                       {t("wavesList.waver")}
                     </div>
