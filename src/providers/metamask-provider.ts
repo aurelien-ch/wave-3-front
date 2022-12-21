@@ -53,7 +53,7 @@ class MetamaskProvider {
   };
 
   private onNetworkChanged = (network: string) => {
-    if (useStore.getState().metamaskAccount && network !== this.chainId) {
+    if (useStore.getState().metamaskAccount && this.isWrongChain(network)) {
       useStore.getState().setModal({
         show: true,
         title: i18n.t("modal.error"),
@@ -64,6 +64,14 @@ class MetamaskProvider {
     } else {
       useStore.getState().setModal({ show: false });
       this.setStateData(useStore.getState().metamaskAccount);
+    }
+  };
+
+  isWrongChain = (network?: string) => {
+    if (network) {
+      return network !== this.chainId;
+    } else {
+      return this.ethereum.networkVersion !== this.chainId;
     }
   };
 
@@ -82,20 +90,28 @@ class MetamaskProvider {
   };
 
   connectAccount = async (): Promise<void> => {
-    try {
-      const accounts = await this.ethereum.request({ method: "eth_requestAccounts" });
+    if (!this.ethereum) {
+      useStore.getState().setModal({
+        show: true,
+        title: i18n.t("modal.error"),
+        content: [i18n.t("errors.installMetamask1"), i18n.t("errors.installMetamask2")],
+      });
+    } else {
+      try {
+        const accounts = await this.ethereum.request({ method: "eth_requestAccounts" });
 
-      if (accounts.length) {
-        useStore.getState().setMetamaskAccount(accounts[0]);
+        if (accounts.length) {
+          useStore.getState().setMetamaskAccount(accounts[0]);
 
-        // If wrong network selected, switch to desired network
+          // If wrong network selected, switch to desired network
 
-        if (this.ethereum.networkVersion !== this.chainId) {
-          this.switchChain();
+          if (this.isWrongChain()) {
+            this.switchChain();
+          }
         }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -160,7 +176,7 @@ class MetamaskProvider {
         buttonTitle: i18n.t("header.connect")!,
         buttonFunction: () => this.connectAccount(),
       });
-    } else if (this.ethereum.networkVersion !== this.chainId) {
+    } else if (this.isWrongChain()) {
       useStore.getState().setModal({
         show: true,
         title: i18n.t("modal.error"),

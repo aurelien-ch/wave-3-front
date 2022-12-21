@@ -62,6 +62,10 @@ const TopWavers = () => {
                 </div>
               </div>
             ))
+          ) : metamaskProvider.isWrongChain() ? (
+            <div className="info-label">
+              {t("topWavers.wrongNetwork")} ⚠️
+            </div>
           ) : (
             <div className="info-label">
               {t("topWavers.noTopWaversYet")} 🙁

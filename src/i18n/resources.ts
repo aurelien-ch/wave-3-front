@@ -31,6 +31,7 @@ const resources = {
         prev: "Prev",
         next: "Next",
         noWavesYet: "No waves yet",
+        wrongNetwork: "Wrong network !",
         pleaseConnect: "Please connect your wallet to see all waves !",
       },
       topWavers: {
@@ -38,8 +39,9 @@ const resources = {
         waver: "Waver",
         waves: "Waves Nb.",
         lastWave: "Last wave",
-        pleaseConnect: "Please connect your wallet to see the top wavers !",
         noTopWaversYet: "No top wavers yet",
+        wrongNetwork: "Wrong network !",
+        pleaseConnect: "Please connect your wallet to see the top wavers !",
       },
 
       /* Others */

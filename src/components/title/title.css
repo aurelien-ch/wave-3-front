@@ -2,7 +2,7 @@
   text-align: center;
   font-family: NeonBallroom;
   font-size: 120px;
-  letter-spacing: 4px;
+  letter-spacing: 8px;
   transform: translateY(10px);
   animation: flicker 2s ease-in-out infinite alternate;
   text-shadow:
@@ -22,6 +22,14 @@
 
 .header-title.tablet {
   font-size: 10vw;
+}
+
+.header-title.safari {
+  letter-spacing: 0px;
+}
+
+.header-title span.first-title-letter-safari {
+  margin-right: -3px;
 }
 
 .header-title span:nth-of-type(1) {

@@ -8,26 +8,12 @@ import "./connect-button.css";
 const ConnectButton = () => {
   const { t } = useTranslation();
   const metamaskProvider = useMetamaskProvider();
-
   const metamaskAccount = useStore(state => state.metamaskAccount);
-  const setModal = useStore(state => state.setModal);
-
-  const connectAcccount = () => {
-    if (!metamaskProvider.getEthereum()) {
-      setModal({
-        show: true,
-        title: t("modal.error"),
-        content: [t("errors.installMetamask1"), t("errors.installMetamask2")],
-      });
-    } else {
-      metamaskProvider.connectAccount();
-    }
-  };
 
   return (
     <div
       className={`connect-button ${metamaskAccount ? "connected" : ""}`}
-      onClick={connectAcccount}
+      onClick={() => metamaskProvider.connectAccount()}
     >
       {metamaskAccount ? metamaskProvider.formatAddress(metamaskAccount) : t("header.connect")}
       {
