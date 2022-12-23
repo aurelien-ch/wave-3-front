@@ -20,10 +20,11 @@
 
 .how-to-use .faucet-link {
   display: inline-block;
-  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0;
   transition: .3s;
 }
 
 .how-to-use .faucet-link:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
