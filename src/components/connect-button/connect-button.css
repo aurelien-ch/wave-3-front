@@ -25,3 +25,7 @@
   right: 14px;
   height: 30px;
 }
+
+.connect-button.mobile {
+  transform: scale(0.9);
+}

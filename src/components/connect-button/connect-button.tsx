@@ -14,7 +14,7 @@ const ConnectButton = () => {
 
   return (
     <div
-      className={`connect-button ${metamaskAccount ? "connected" : ""}`}
+      className={`connect-button ${metamaskAccount ? "connected" : ""} ${isMobile ? "mobile" : ""}`}
       onClick={() => metamaskProvider.connectAccount(isMobile)}
     >
       {metamaskAccount ? metamaskProvider.formatAddress(metamaskAccount) : t("header.connect")}
