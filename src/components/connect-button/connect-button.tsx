@@ -12,18 +12,10 @@ const ConnectButton = () => {
   const metamaskProvider = useMetamaskProvider();
   const metamaskAccount = useStore(state => state.metamaskAccount);
 
-  const connectAccount = () => {
-    if (isMobile) {
-      window.open("https://metamask.app.link/dapp/" + window.location.href, "_blank");
-    } else {
-      metamaskProvider.connectAccount();
-    }
-  };
-
   return (
     <div
       className={`connect-button ${metamaskAccount ? "connected" : ""}`}
-      onClick={connectAccount}
+      onClick={() => metamaskProvider.connectAccount(isMobile)}
     >
       {metamaskAccount ? metamaskProvider.formatAddress(metamaskAccount) : t("header.connect")}
       {

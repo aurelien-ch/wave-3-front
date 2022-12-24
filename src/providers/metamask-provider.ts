@@ -89,13 +89,18 @@ class MetamaskProvider {
     }
   };
 
-  connectAccount = async (): Promise<void> => {
+  connectAccount = async (isMobile?: boolean): Promise<void> => {
     if (!this.ethereum) {
-      useStore.getState().setModal({
-        show: true,
-        title: i18n.t("modal.error"),
-        content: [i18n.t("errors.installMetamask1"), i18n.t("errors.installMetamask2")],
-      });
+      if (isMobile) {
+        // Open the dApp in the Metamask app browser
+        window.open("https://metamask.app.link/dapp/" + window.location.href, "_blank");
+      } else {
+        useStore.getState().setModal({
+          show: true,
+          title: i18n.t("modal.error"),
+          content: [i18n.t("errors.installMetamask1"), i18n.t("errors.installMetamask2")],
+        });
+      }
     } else {
       try {
         const accounts = await this.ethereum.request({ method: "eth_requestAccounts" });
@@ -104,7 +109,6 @@ class MetamaskProvider {
           useStore.getState().setMetamaskAccount(accounts[0]);
 
           // If wrong network selected, switch to desired network
-
           if (this.isWrongChain()) {
             this.switchChain();
           }
