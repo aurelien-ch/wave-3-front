@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# Wave3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wave3 is a decentralized application (dApp) that allows users to wave at me by making an Ethereum transaction on the Goerli testnet. Each user's waves are recorded on the blockchain, and a leaderboard displays the users who have waved the most times. Users can only wave once every 24 hours.
 
-## Available Scripts
+This repository is the front-end of Wave3 (React + Typescript).
 
-In the project directory, you can run:
+## Set up
 
-### `npm start`
+To set up and run the dApp locally:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repository : `git clone https://github.com/aurelien-ch/wave-3-front.git`
+2. Install the dependencies: `npm install`
+3. Start the development server: `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How it works
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Connect your Metamask wallet
+2. Switch to the Goerli test network
+3. Claim some fake ETH here : https://goerlifaucet.com/
+4. Click the "Wave at me" button to send a wave transaction
