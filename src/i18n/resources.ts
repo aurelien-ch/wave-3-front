@@ -9,7 +9,7 @@ const resources = {
       },
       waveBox: {
         waveHeadline1: "Hi ! My name is Aurélien, and welcome to my first dApp.",
-        waveHeadline2: "Here you can wave at me, and each wave will be stored on the Ethereum blockchain.",
+        waveHeadline2: "Here you can wave at me, and each of your waves will be stored on the Ethereum blockchain.",
         waveHeadline3: "You can wave once every 24 hours. Happy waving !",
         yourTotalWaves: "Your total waves : ",
         waveAtMe: "Wave at me",

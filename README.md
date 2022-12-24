@@ -9,8 +9,8 @@ This repository is the front-end of Wave3 (React + Typescript).
 To set up and run the dApp locally:
 
 1. Clone the repository : `git clone https://github.com/aurelien-ch/wave-3-front.git`
-2. Install the dependencies: `npm install`
-3. Start the development server: `npm start`
+2. Install the dependencies : `npm install`
+3. Start the development server : `npm start`
 
 ## How it works
 
