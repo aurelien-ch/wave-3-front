@@ -2,6 +2,8 @@
 
 Wave3 is a decentralized application (dApp) that allows users to wave at me by making an Ethereum transaction on the Goerli testnet. Each user's waves are recorded on the blockchain, and a leaderboard displays the users who have waved the most times. Users can only wave once every 24 hours.
 
+Link : https://wave-3.vercel.app/
+
 This repository is the front-end of Wave3 (React + Typescript).
 
 ## Set up
